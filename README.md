@@ -21,7 +21,7 @@
 2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC***. 
  
 ##Configuration
-1. Download the Applanga *settingsfile* for your app from the Applanga App Overview by clicking ***[download settings]***. (The filename should reflect your bundle id or package name as lowercase string and dots repcaed with underscore with the ending .applanga)
+1. Download the Applanga *settingsfile* for your app from the Applanga App Overview by clicking ***[download settings]***. (The filename should reflect your bundle id or package name as lowercase string and dots replaced with underscores with the ending .applanga)
  
 2. Add the *settingsfile* to your apps resources it will be automatically loaded if the name matches your bundle id.
 
