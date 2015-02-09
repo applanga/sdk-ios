@@ -11,6 +11,5 @@ Pod::Spec.new do |s|
   s.preserve_paths      = 'Applanga.framework'
   s.public_header_files = 'Applanga.framework/Headers/Applanga.h'
   s.vendored_frameworks = 'Applanga.framework'
-  s.weak_framework      = 'SystemConfiguration', 'MobileCoreServices'
   s.requires_arc        = true
 end
