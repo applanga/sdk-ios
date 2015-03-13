@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.0
+*Version:* 1.0.1
 
 *URL:* <http://applanga.com> 
 ***
@@ -21,13 +21,11 @@
 2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC***. 
  
 ##Configuration
-1. Download the Applanga *settingsfile* for your app from the Applanga App Overview by clicking ***[download settings]***. (The filename should reflect your bundle id or package name as lowercase string and dots replaced with underscores with the ending .applanga)
+1. Download the Applanga *settingsfile* for your app from the Applanga App Overview by clicking ***[Download Settings]***.
  
-2. Add the *settingsfile* to your apps resources it will be automatically loaded if the name matches your bundle id.
-
-3. **Optional:** If you want to use a *settingsfile* for one or more apps with a different bundle/package name. you can do so by specifying the name of the applanga *settingsfile* in your Info.plist under the key ***ApplangaSettingsFilename***.
+2. Add the *settingsfile* to your apps resources it will be automatically loaded.
  
-4. Now if you start your app you should see a log message that tells you that Applanga was initialized or a warning in case of a missing configuration.
+3. Now if you start your app you should see a log message that tells you that Applanga was initialized or a warning in case of a missing configuration.
 
 ##Usage
 Once Applanga is integrated and configured it is synchronizing your local strings with the Applanga dashboard every time you start your app or if new missing strings are found. Translations that you have stored in local *".strings"* files in your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. You don’t need to use any special methods just continue using ***[NSLocalizedString](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Miscellaneous/Foundation_Functions/#//apple_ref/c/macro/NSLocalizedString)*** like you are used to do.
