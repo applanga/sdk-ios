@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.8
+*Version:* 1.0.9
 
 *URL:* <http://applanga.com> 
 ***
