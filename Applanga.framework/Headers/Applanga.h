@@ -17,7 +17,20 @@
  */
 + (void)localizeWithCompletionHandler:(void (^)(BOOL success))completionHandler;
 
+/** get localized string for current language and given key
+ */
++ (NSString*)localizedStringForKey:(NSString*)key;
+
+/** get localized string for given key and language
+ */
++ (NSString*)localizedStringForKey:(NSString*)key andLanguage:(NSString*)languageName;
+
+/** reset the instance and saved values
+ */
++ (void)reset;
+
 /** get current sdk version
  */
 + (NSString*)sdkVersion;
+
 @end
