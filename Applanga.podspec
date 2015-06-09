@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name                = "Applanga"
-  s.version             = "1.0.12"
+  s.version             = "1.0.13"
   s.summary             = "This is the iOS SDK for Applanga."
   s.homepage            = "http://applanga.com"
   s.license             = { :type => 'Commercial', :file => 'LICENSE' }
   s.author              = { "Mbaas Development GmbH" => "developer@applanga.com" }
-  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "1.0.12" }
+  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "1.0.13" }
   s.platform            = :ios, '7.0'
   s.framework           = 'SystemConfiguration'
   s.preserve_paths      = 'Applanga.framework'
