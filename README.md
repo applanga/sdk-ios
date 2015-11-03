@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.33
+*Version:* 1.0.34
 
 *URL:* <http://applanga.com> 
 ***
@@ -104,12 +104,12 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	 	 withCompletionHandler:^(BOOL success) {
         		//called if update is complete
     	}];
+    
 3. **Change Language**
  
   	You can change your app's language at runtime using the following call: 
   	
 		BOOL success = [Applanga setLanguage: language];
-  	 
   	 
   	 *language* must be the iso string of a language that has been added in 	the dashboard. 
   	The return value will be *YES* if the language could be set, or if it already was the 	current language, otherwise it will be *NO*. 
@@ -139,7 +139,6 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 			***This will be replaced with the value of APPLANGA_ID***
 		</div>
 	
-	
 	4.2 **Arguments**
 	
 	You can pass arguments with the ```applanga-args``` attribute.
@@ -166,7 +165,6 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 			***This will be replaced with the value of APPLANGA_ID***
 			***and formatted with json arguments***
 		</div> 
-	
 	
 	4.3 **Pluralisation**
 		
