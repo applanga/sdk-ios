@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.31
+*Version:* 1.0.32
 
 *URL:* <http://applanga.com> 
 ***
@@ -104,21 +104,34 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	 	 withCompletionHandler:^(BOOL success) {
         		//called if update is complete
     	}];
+3. **Change Language**
+ 
+  	You can change your app's language at runtime using the following call: 
+  	
+		BOOL success = [Applanga setLanguage: language];
+  	 
+  	 
+  	 *language* must be the iso string of a language that has been added in 	the dashboard. 
+  	The return value will be *YES* if the language could be set, or if it already was the 	current language, otherwise it will be *NO*. 
+  	The set language will be saved, to reset to the 	device language call:
+  		
+  		Applanga.setLanguage(nil); 
+  	
+  	After a successful call you need to reinitialize your UI for the changes to 	take effect, for example you might recreate the root Storyboard controller and present it.
                		
-3. **WebViews**
+4. **WebViews**
 	
 	Applanga can also translate content in your WebViews if it is enabled.
 	
 	Add ```ApplangaTranslateWebViews``` set to ```YES``` to your Info.plist to enable translation support for all WebViews.
-        
-        
-	To initalize Applanga for your webcontent you need to initialize Applanga from JavaScript:
+    
+    To initalize Applanga for your webcontent you need to initialize Applanga from JavaScript:
 	
 		<script type="text/javascript">
     		var applanga = Applanga({});
 		</script>
 		
-	3.1 **Strings**
+	4.1 **Strings**
 		
 	The inner text and html of tags wich have a ```applanga-text="APPLANGA_ID"``` attribute will be replaced with the translated value of ***APPLANGA_ID***
 	
@@ -127,7 +140,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		</div>
 	
 	
-	3.2 **Arguments**
+	4.2 **Arguments**
 	
 	You can pass arguments with the ```applanga-args``` attribute.
 	By default the arguments are parsed as a comma seperated list wich then will replace fields as %{arrayIndex}. 
@@ -155,7 +168,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		</div> 
 	
 	
-	3.3 **Pluralisation**
+	4.3 **Pluralisation**
 		
 	To pluralize a html tag you can pass the ```applanga-plural-rule``` attribute with the value ```zero```, ```one```, ```two```, ```few```, ```many``` and ```other```.
 	
@@ -169,7 +182,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 			***This will be replaced with the pluralized value of APPLANGA_ID***
 		</div> 	
 		
-	3.4 **Update Content**
+	4.4 **Update Content**
 	
 	To trigger a content update from a WebView use javascript:
 		

@@ -53,7 +53,12 @@ extern ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 
 /** override phone language with custom language
  */
-+ (void)setLanguage:(NSString*)language;
+/*+ (void)setLanguage:(NSString*)language;*/
+
+/** change phone language to new language
+ */
++ (BOOL)setLanguage:(NSString*)language;
+
 
 /** reset the instance and saved values
  */
