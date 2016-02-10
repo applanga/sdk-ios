@@ -8,7 +8,7 @@
 ##Installation
 ####CocoaPods [[?](http://cocoapods.org)]
 
-1. Refer to CocoaPod’s [Getting Started Guide](http://cocoapods.org/#getstarted) for detailed instructions about Cocoapods.
+1. Refer to CocoaPod’s [Getting Started Guide](http://cocoapods.org/#getstarted) for detailed instructions about CocoaPods.
 
 2. After you have created your Podfile, insert this line of code: ***pod 'Applanga'***
 
