@@ -51,10 +51,6 @@ extern ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule;
 
-/** override phone language with custom language
- */
-/*+ (void)setLanguage:(NSString*)language;*/
-
 /** change phone language to new language
  */
 + (BOOL)setLanguage:(NSString*)language;

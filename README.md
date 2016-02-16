@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.37
+*Version:* 1.0.38
 
 *URL:* <http://applanga.com> 
 ***
@@ -21,16 +21,22 @@
 2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC***. 
  
 ##Configuration
-1. Download the Applanga *Settings File* for your app from the Applanga App Overview in the dashboard by clicking ***[Download Settings]***.
+1. Download the *Applanga Settings File* for your app from the Applanga App Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
  
-2. Add the Applanga *Settings File* to your apps resources. It will be automatically loaded.
+2. Add the *Applanga Settings File* to your apps resources. It will be automatically loaded.
  
 3. Now, if you start your app you should see a log message that confirms that Applanga was initialized or a warning in case of a missing configuration.
+
+---
+
+######*NOTE: To have native iOS dialogs properly translated and to show your supported languages on the Appstore you need to have atleast one .strings file bundled with your app for every language. (The file can be empty)*
+
+---
 
 ##Usage
 ###Basic:
 
-- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app or if new missing strings are found. Translations that you have stored in local *".strings"* files in your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
+- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UsingtheDebugger.html#//apple_ref/doc/uid/TP40010215-CH57-SW1l) or [Draft Mode](https://applanga.com/#!/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in local *".strings"* files in your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
 Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4).
 You don’t need to use any special methods just continue using ***[NSLocalizedString](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Miscellaneous/Foundation_Functions/#//apple_ref/c/macro/NSLocalizedString)*** like you are used to do.
 
@@ -39,7 +45,7 @@ You don’t need to use any special methods just continue using ***[NSLocalizedS
 
 Besides the Basic usage Applanga offers support for ***named arguments*** in your strings, ***pluralisation***, ***partial updates*** to save space and bandwith as well as translation of html and javascript content in ```UIWebView``` instances.
 
-1. **Code Localisation**
+1. **Code Localization**
  
 	1.1 **Strings** 
 
@@ -158,7 +164,6 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		</div>
 	
 	Direct call : `Applanga.getString('APPLANGA_ID', 'arg1,arg2,etc')`
-		
 	
 	To define a different separator instead of ```,``` e.g. if your arguments contain commas use ```applanga-args-separator```.
 	
@@ -206,3 +211,23 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		Applanga.updateGroups("GroupA, GroupB", "de, en, fr", function(success){
         	//called if update is complete
     	});		
+    	
+    	
+##Optional settings
+
+You can specify a set of default groups and languages in your plist, which will be updated on every Applanga.update() or Applanga.updateGroups() call. These groups and languages will be added to any that are specified in the call itself, they will *always* be requested.
+	The Parameter value must be a string, with a list of groups or languages separated by commata.
+
+1. **Specify default groups**
+
+        		...
+        		<key>ApplangaUpdateGroups</key>
+            	<string>turorial,chapter1,chapter2</string>
+            	...        
+	
+2. **Specify default languages**
+
+        		...
+        		<key>ApplangaUpdateLanguages</key>
+            	<string>en,de-at,fr</string>
+            	...        
