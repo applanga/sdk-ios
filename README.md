@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.39
+*Version:* 1.0.40
 
 *URL:* <http://applanga.com> 
 ***
@@ -87,6 +87,8 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 			
 		// get a string in the given quantity
 		ALLocalizedStringWithQuantity(@"APPLANGA_ID", quantity);
+		// or get a formatted string with the given quantity
+		NSString localizedStringWithFormat:ALLocalizedStringWithQuantity(@"APPLANGA_ID", quantity), quantity]
 		
 	In the dashboard you create a **puralized ID** by appending the Pluralisation rule to your **ID** in the following format: ```[zero]```, ```[one]```,```[two]```,```[few]```,```[many]```, ```[other]```.
 	
