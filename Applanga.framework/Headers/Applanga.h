@@ -10,10 +10,6 @@
 
 #import <Foundation/Foundation.h>
 
-/** Applanga
- */
-@interface Applanga : NSObject
-
 typedef NS_ENUM(NSInteger, ALPluralRule) {
     ALPluralRuleZero = 0,
     ALPluralRuleOne,
@@ -23,10 +19,14 @@ typedef NS_ENUM(NSInteger, ALPluralRule) {
     ALPluralRuleOther
 };
 
+/** Applanga
+ */
+@interface Applanga : NSObject
+
 /** get pluralisation rule for current language and given quantity based on:
  *  http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
  */
-extern ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
+ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 
 /**  manually fetch latest localisation updates from Applanga
  @param completionHandler handler that gets triggered when the localisation update finishes
@@ -88,6 +88,10 @@ extern ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 
 #ifndef ALLocalizedStringWithQuantityAndArgs
 #define ALLocalizedStringWithQuantityAndArgs(key, quantity, args) [Applanga localizedStringForKey:key withArguments:args andPluralRule:ALPluralRuleForQuantity(quantity)]
+#endif
+
+#ifndef ALSetLanguage
+#define ALSetLanguage(language) [Applanga setLanguage:language]
 #endif
 
 #ifndef ALSdkVersion

@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.40
+*Version:* 1.0.41
 
 *URL:* <http://applanga.com> 
 ***
@@ -128,6 +128,11 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
   		Applanga.setLanguage(nil); 
   	
   	After a successful call you need to reinitialize your UI for the changes to 	take effect, for example you might recreate the root Storyboard controller and present it.
+  	
+  	The *language* parameter is expected in the format **[language]-[region]** or 	**[language]_[region]** with region being optional. Examples: "fr_CA", "en-us", "de". 
+  	
+  	If you have problems switching to a specific language you can update your settings file 	or specifically request that language within an update content call (see **2. Update Content**). You can also 	specify the language as a default language to have it requested on each update call (see **Optional settings**).
+  	
                		
 4. **WebViews**
 	
