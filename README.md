@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.42
+*Version:* 1.0.43
 
 *URL:* <http://applanga.com> 
 ***
@@ -133,6 +133,22 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
   	
   	If you have problems switching to a specific language you can update your settings file 	or specifically request that language within an update content call (see **2. Update Content**). You can also 	specify the language as a default language to have it requested on each update call (see **Optional settings**).
   	
+  	
+  			
+  		+ (void) changeAppLanguage:(NSString *)language {
+			[Applanga updateGroups:nil andLanguages:@[language] withCompletionHandler:^( BOOL updateSuccess ){
+			
+			if(updateSuccess){
+
+				BOOL languageChangedSuccess = [Applanga setLanguage:language];
+				
+				if(languageChangedSuccess) {
+				//recreate ui
+				
+				} 
+			} 
+		}
+  	
                		
 4. **WebViews**
 	
@@ -237,4 +253,13 @@ You can specify a set of default groups and languages in your plist, which will 
         		...
         		<key>ApplangaUpdateLanguages</key>
             	<string>en,de-at,fr</string>
-            	...        
+            	...
+            	
+3. **Disable upload of storyboard strings**
+	You have the option to disable the collection of storyboard strings, by setting this value 	to false. This will not prevent the upload of localized .strings files that you may have 	created for your storyboard, but will stop the default upload of the cryptic string ids 	that are created for text ui elements in the storyboard.
+	
+				...
+        		<key>ApplangaCollectStoryBoardStrings</key>
+            	<false/>
+            	...
+            	
