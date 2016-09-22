@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.51
+*Version:* 1.0.52
 
 *URL:* <http://applanga.com> 
 ***
@@ -18,7 +18,7 @@
 
 1. Download the latest release of the Applanga iOS SDK from [Github](https://github.com/applanga/sdk-ios/releases). Unzip it, then drag and drop Applanga.framework into your project. You’ll probably want to check the "Copy items into destination group’s folder (if needed)" option.
 
-2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC***. 
+2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC, -lsqlite3, -lz***. 
  
 ##Configuration
 1. Download the *Applanga Settings File* for your app from the Applanga App Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
@@ -56,9 +56,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
                 
         // if you pass a string:string dictionary you can get translated string
         // with named arguments. %{someArg} %{anotherArg} etc.
-        NSDictionary* args = [[NSDictionary alloc] init];
-        args[@"someArg"] = @"awesome";
-        args[@"anotherArg"] = @"crazy";
+        NSDictionary* args = @{@"someArg": @"awesome",@"anotherArg": @"crazy"};
         ALLocalizedStringWithArgs(@"APPLANGA_ID", args);
         
     Example:
