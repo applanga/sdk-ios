@@ -41,15 +41,18 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 
 /** get localized string for current language and given key
  */
-+ (NSString*)localizedStringForKey:(NSString*)key;
++ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value;
++ (NSString*)localizedStringForKey:(NSString*)key __attribute__((deprecated));
 
 /** get localized string for given key and arguments
  */
-+ (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments;
++ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments;
++ (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments __attribute__((deprecated));
 
 /** get localized string for given key, arguments and pluralisation
  */
-+ (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule;
++ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule;
++ (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule __attribute__((deprecated));
 
 /** change phone language to new language
  */
@@ -67,27 +70,27 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 @end
 
 #ifndef ALLocalizedString
-#define ALLocalizedString(key) [Applanga localizedStringForKey:key]
+#define ALLocalizedString(key, defaultValue) [Applanga localizedStringForKey:key withDefaultValue:defaultValue]
 #endif
 
 #ifndef ALLocalizedStringWithArgs
-#define ALLocalizedStringWithArgs(key, args) [Applanga localizedStringForKey:key withArguments:args]
+#define ALLocalizedStringWithArgs(key, defaultValue, args) [Applanga localizedStringForKey:key withDefaultValue:defaultValue andArguments:args]
 #endif
 
 #ifndef ALLocalizedStringWithPluralRule
-#define ALLocalizedStringWithPluralRule(key, rule) [Applanga localizedStringForKey:key withArguments:nil andPluralRule:rule]
+#define ALLocalizedStringWithPluralRule(key, defaultValue, rule) [Applanga localizedStringForKey:key withDefaultValue:defaultValue andArguments:nil andPluralRule:rule]
 #endif
 
 #ifndef ALLocalizedStringWithQuantity
-#define ALLocalizedStringWithQuantity(key, quantity) [Applanga localizedStringForKey:key withArguments:nil andPluralRule:ALPluralRuleForQuantity(quantity)]
+#define ALLocalizedStringWithQuantity(key, defaultValue, quantity) [Applanga localizedStringForKey:key withDefaultValue:defaultValue andArguments:nil andPluralRule:ALPluralRuleForQuantity(quantity)]
 #endif
 
 #ifndef ALLocalizedStringWithPluralRuleAndArgs
-#define ALLocalizedStringWithPluralRuleAndArgs(key, rule, args) [Applanga localizedStringForKey:key withArguments:args andPluralRule:rule]
+#define ALLocalizedStringWithPluralRuleAndArgs(key, defaultValue, rule, args) [Applanga localizedStringForKey:key withDefaultValue:defaultValue andArguments:args andPluralRule:rule]
 #endif
 
 #ifndef ALLocalizedStringWithQuantityAndArgs
-#define ALLocalizedStringWithQuantityAndArgs(key, quantity, args) [Applanga localizedStringForKey:key withArguments:args andPluralRule:ALPluralRuleForQuantity(quantity)]
+#define ALLocalizedStringWithQuantityAndArgs(key, defaultValue, quantity, args) [Applanga localizedStringForKey:key withDefaultValue:defaultValue andArguments:args andPluralRule:ALPluralRuleForQuantity(quantity)]
 #endif
 
 #ifndef ALSetLanguage

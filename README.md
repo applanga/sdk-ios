@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.52
+*Version:* 1.0.53
 
 *URL:* <http://applanga.com> 
 ***
@@ -38,8 +38,15 @@
 
 - Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UsingtheDebugger.html#//apple_ref/doc/uid/TP40010215-CH57-SW1l) or [Draft Mode](https://applanga.com/#!/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in local *".strings"* files in your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
 Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4).
-You don’t need to use any special methods just continue using ***[NSLocalizedString](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Miscellaneous/Foundation_Functions/#//apple_ref/c/macro/NSLocalizedString)*** like you are used to do.
+You don’t need to use any special code. 
+	- With ***Objective-C*** use the native method ***[NSLocalizedStringWithDefaultValue(@"APPLANGA_ID", nil, NSBundle.mainBundle, @"default value", @"")](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue?language=objc)*** 
+	
+	- With ***Swift*** use ***[NSLocalizedString("APPLANGA_ID", value: "default value", comment: "")](https://developer.apple.com/reference/foundation/1418095-nslocalizedstring)*** like you are used to do.
 
+
+---
+######*NOTE: If you do not specifiy a default value the string will not be created on the Applanga dashboard.*
+---
 
 ###Extended:
 
@@ -50,14 +57,14 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	1.1 **Strings** 
 
 		// get translated string for the current device locale
-        ALLocalizedString(@"APPLANGA_ID");
+        ALLocalizedString(@"APPLANGA_ID", @"default value");
 
 	1.2 **Named Arguments**
                 
         // if you pass a string:string dictionary you can get translated string
         // with named arguments. %{someArg} %{anotherArg} etc.
         NSDictionary* args = @{@"someArg": @"awesome",@"anotherArg": @"crazy"};
-        ALLocalizedStringWithArgs(@"APPLANGA_ID", args);
+        ALLocalizedStringWithArgs(@"APPLANGA_ID", @"default value", args);
         
     Example:
     
@@ -70,7 +77,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	1.3 **Pluralisation**
 		
 		// get translated string in given pluralisation rule (one)
-		ALLocalizedStringWithPluralRule(@"APPLANGA_ID", ALPluralRuleOne)
+		ALLocalizedStringWithPluralRule(@"APPLANGA_ID", @"default value", ALPluralRuleOne)
 		
 	Available pluralisation rules:
 	
@@ -84,9 +91,9 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	you can also specify a quantity and Applanga will pick the best pluralisation rule based on: [http://unicode.org/.../language_plural_rules.html	](http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
 			
 		// get a string in the given quantity
-		ALLocalizedStringWithQuantity(@"APPLANGA_ID", quantity);
+		ALLocalizedStringWithQuantity(@"APPLANGA_ID", @"default value", quantity);
 		// or get a formatted string with the given quantity
-		NSString localizedStringWithFormat:ALLocalizedStringWithQuantity(@"APPLANGA_ID", quantity), quantity]
+		NSString localizedStringWithFormat:ALLocalizedStringWithQuantity(@"APPLANGA_ID", @"default value", quantity), quantity]
 		
 	In the dashboard you create a **puralized ID** by appending the Pluralisation rule to your **ID** in the following format: ```[zero]```, ```[one]```,```[two]```,```[few]```,```[many]```, ```[other]```.
 	
