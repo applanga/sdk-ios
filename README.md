@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.55
+*Version:* 1.0.56
 
 *URL:* <http://applanga.com> 
 ***
@@ -36,9 +36,8 @@
 ##Usage
 ###Basic:
 
-- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UsingtheDebugger.html#//apple_ref/doc/uid/TP40010215-CH57-SW1l) or [Draft Mode](https://applanga.com/#!/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in local *".strings"* files in your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
-Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4).
-You don’t need to use any special code. 
+- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UsingtheDebugger.html#//apple_ref/doc/uid/TP40010215-CH57-SW1l) or [Draft Mode](https://applanga.com/#!/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
+Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4). If you have additional *".strings"* files that should be automatically uploaded you can add them in your Info.plist with the key **ApplangaAdditionalStringFiles** as a comma seperated list. You don’t need to use any special code. 
 	- With ***Objective-C*** use the native method ***[NSLocalizedStringWithDefaultValue(@"APPLANGA_ID", nil, NSBundle.mainBundle, @"default value", @"")](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue?language=objc)*** 
 	
 	- With ***Swift*** use ***[NSLocalizedString("APPLANGA_ID", value: "default value", comment: "")](https://developer.apple.com/reference/foundation/1418095-nslocalizedstring)*** like you are used to do.
