@@ -54,6 +54,12 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 + (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule;
 + (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule __attribute__((deprecated));
 
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs;
+
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs withCompletionHandler: (void (^)(BOOL success))completionHandler;
+
++ (BOOL)setScreenShotMenuVisible:(BOOL)visible;
+
 /** change phone language to new language
  */
 + (BOOL)setLanguage:(NSString*)language;
@@ -93,11 +99,4 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 #define ALLocalizedStringWithQuantityAndArgs(key, defaultValue, quantity, args) [Applanga localizedStringForKey:key withDefaultValue:defaultValue andArguments:args andPluralRule:ALPluralRuleForQuantity(quantity)]
 #endif
 
-#ifndef ALSetLanguage
-#define ALSetLanguage(language) [Applanga setLanguage:language]
-#endif
-
-#ifndef ALSdkVersion
-#define ALSdkVersion() [Applanga sdkVersion]
-#endif
 

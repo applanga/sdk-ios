@@ -1,6 +1,6 @@
 #Applanga SDK for iOS
 ***
-*Version:* 1.0.56
+*Version:* 1.0.57
 
 *URL:* <http://applanga.com> 
 ***
@@ -56,14 +56,14 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	1.1 **Strings** 
 
 		// get translated string for the current device locale
-        ALLocalizedString(@"APPLANGA_ID", @"default value");
+		[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value"];
 
 	1.2 **Named Arguments**
                 
         // if you pass a string:string dictionary you can get translated string
         // with named arguments. %{someArg} %{anotherArg} etc.
         NSDictionary* args = @{@"someArg": @"awesome",@"anotherArg": @"crazy"};
-        ALLocalizedStringWithArgs(@"APPLANGA_ID", @"default value", args);
+        [Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:args]
         
     Example:
     
@@ -76,7 +76,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	1.3 **Pluralisation**
 		
 		// get translated string in given pluralisation rule (one)
-		ALLocalizedStringWithPluralRule(@"APPLANGA_ID", @"default value", ALPluralRuleOne)
+		[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:nil andPluralRule:ALPluralRuleOne]
 		
 	Available pluralisation rules:
 	
@@ -90,9 +90,10 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	you can also specify a quantity and Applanga will pick the best pluralisation rule based on: [http://unicode.org/.../language_plural_rules.html	](http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html)
 			
 		// get a string in the given quantity
-		ALLocalizedStringWithQuantity(@"APPLANGA_ID", @"default value", quantity);
+		[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:nil andPluralRule:ALPluralRuleForQuantity(quantity)]
+
 		// or get a formatted string with the given quantity
-		NSString localizedStringWithFormat:ALLocalizedStringWithQuantity(@"APPLANGA_ID", @"default value", quantity), quantity]
+		NSString localizedStringWithFormat:[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:nil andPluralRule:ALPluralRuleForQuantity(quantity)], quantity]
 		
 	In the dashboard you create a **puralized ID** by appending the Pluralisation rule to your **ID** in the following format: ```[zero]```, ```[one]```,```[two]```,```[few]```,```[many]```, ```[other]```.
 	
@@ -136,24 +137,19 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
   	The *language* parameter is expected in the format **[language]-[region]** or 	**[language]_[region]** with region being optional. Examples: "fr_CA", "en-us", "de". 
   	
   	If you have problems switching to a specific language you can update your settings file 	or specifically request that language within an update content call (see **2. Update Content**). You can also 	specify the language as a default language to have it requested on each update call (see **Optional settings**).
-  	
-  	
   			
-  		+ (void) changeAppLanguage:(NSString *)language {
+		+ (void) changeAppLanguage:(NSString *)language {
 			[Applanga updateGroups:nil andLanguages:@[language] withCompletionHandler:^( BOOL updateSuccess ){
 			
 			if(updateSuccess){
-
 				BOOL languageChangedSuccess = [Applanga setLanguage:language];
 				
 				if(languageChangedSuccess) {
-				//recreate ui
-				
+					//recreate ui
 				} 
 			} 
 		}
-  	
-               		
+
 4. **WebViews**
 	
 	Applanga can also translate content in your WebViews if it is enabled.
@@ -239,6 +235,71 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
         	//called if update is complete
     	});		
     	
+5. **Automatic Screenshot Upload**
+ 	
+ 	To give translators some context for translating strings, the Applanga SDK offers the 	functionality to upload screenshots of your app, while collecting meta data such as the 	currrent language, resolution and the Applanga translated strings that are visible, 	including their positions.
+ 	Each screenshot will be assigned to a tag. A tag may have multiple screenshots with 	differing core meta data: language, app version, device, platform, OS and resolution. 
+ 	You can read more here : [Manage Tags](https://applanga.com/#!/docs#manage_tags) and here: 	[Uploading screenshots](https://applanga.com/#!/docs#uploading_screenshots).
+ 	
+ 	5.1 **Make screenshots manually**
+ 	
+ 	To manually make a screenshot you first have to set your app into [draft mode](https://applanga.com/#!/docs#draft_on_device_testing).
+ 	 
+ 	With your app in draft mode, all you have to do is to make a two finger swipe downwards.
+ 	This will show the screenshot menu and load a list of [tags](https://applanga.com/#!/docs#manage_tags). 
+ 	
+ 	You can now choose a tag and press *capture screenshot* to capture and upload a screenshot including all meta data for the currently visible screen and assign it to the selected tag.
+ 	Tags have to be created in the dashboard before they are available in the screenshot menu.
+ 	
+ 	5.2 **Display screenshot menu programmatically**
+ 	
+ 	You also have the option to open the screenshot menu programmatically, this also requires the app to be in draft mode:
+ 		
+		[Applanga setScreenShotMenuVisible:YES]
+ 				
+ 	5.3 **Make screenshots programmatically**
+ 	
+ 	To create a screenshot programmatically you call the following function:
+ 	
+		NSString* tag = @"MainMenu";
+		NSArray* applangaIDs = [NSArrayarrayWithObjects:@"String1",@"String2",@"String3",nil];
+		[Applanga captureScreenshotWithTag:tag andIDs:applangaIDs];
+			
+ 	The Applanga SDK tries to find all IDs on the screen but you can also pass additional IDs in the **applangaIDs** parameter. 
+ 	
+ 	5.4 **Automated during UITests**
+ 	
+ 	To capture screenshots from UITests running in xcode you first have to add a specific launch argument in your test classes setup function:
+ 	
+		- (void)setUp {
+			[super setUp];
+			XCUIApplication *app =[[XCUIApplication alloc] init];
+			app.launchArguments = @[@"ApplangaUITestScreenshotEnabled"];
+			[app launch];
+		}
+ 	
+ 	Now you can capture screenshots as shown in the following example:
+
+		- (void)testExample2 {
+
+    		XCUIApplication *app = [app init];
+    
+    		//open screenshot menu by tapping invisible Applanga button
+    		[app.buttons[@"Applanga.ToggleScreenShotMenu"] tap];
+    		//toggle tag selection
+    		[app.buttons[@"Applanga.SelectTag"] tap];
+    		//select tag named "MainMenu"
+    		[app.tables.staticTexts[@"MainMenu"] tap];
+    		//capture screenshot
+    		[app.buttons[@"Applanga.CaptureScreen"] tap];
+    
+    		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
+    		NSPredicate *waitPredicate = [NSPredicate predicateWithFormat:@"exists == 1"];
+    		[self expectationForPredicate:waitPredicate evaluatedWithObject:app.buttons[@"Applanga.SelectTag"] handler:nil];
+    		[self waitForExpectationsWithTimeout:30 handler:nil];
+    		...
+    	}		
+ 	
     	
 ##Optional settings
 
