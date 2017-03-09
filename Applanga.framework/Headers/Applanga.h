@@ -10,57 +10,111 @@
 
 #import <Foundation/Foundation.h>
 
+/** Languages vary in how they handle plurals of nouns or unit expressions ("hour" vs "hours", and so on). Some languages have two forms, like English; some languages have only a single form; and some languages have multiple forms.
+ @see http://cldr.unicode.org/index/cldr-spec/plural-rules
+ @see http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
+ */
 typedef NS_ENUM(NSInteger, ALPluralRule) {
-    ALPluralRuleZero = 0,
-    ALPluralRuleOne,
-    ALPluralRuleTwo,
-    ALPluralRuleFew,
-    ALPluralRuleMany,
-    ALPluralRuleOther
+    /** Zero Form */ALPluralRuleZero = 0,
+    /** Singular Form */ALPluralRuleOne,
+    /** Dual Form */ALPluralRuleTwo,
+    /** Paucal Form */ALPluralRuleFew,
+    /** also used for fractions if they have a separate class */ALPluralRuleMany,
+    /** general plural form—also used if the language only has a single form */ALPluralRuleOther
 };
 
-/** Applanga
+/** Applanga Interface Specification
+ *
+ * *NOTE:* In most cases you do not need to manually call any of the Applanga methods and you can simply use [NSLocalizedStringWithDefaultValue(@“APPLANGA_ID”, nil, NSBundle.mainBundle, @“default value”, @“”)](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue)
+ *
+ * *Website*: [https://applanga.com](https://applanga.com)
+ *
+ * *Platform Docs*: [https://applanga.com/#!/docs](https://applanga.com/#!/docs)
+ *
+ * *Integration Docs*: [https://applanga.com/#!/docs/integration/ios](https://applanga.com/#!/docs/integration/ios)
+ *
+ * ---
  */
 @interface Applanga : NSObject
 
-/** get pluralisation rule for current language and given quantity based on:
- *  http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
+/** get ALPluralRule pluralisation rule for current language and given quantity based on:
+ @see http://cldr.unicode.org/index/cldr-spec/plural-rules
+ @see http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
  */
 ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 
-/**  manually fetch latest localisation updates from Applanga
- @param completionHandler handler that gets triggered when the localisation update finishes
+/**  manually fetch latest localization updates from Applanga
+ @param completionHandler handler that gets triggered when the localization update finishes
  */
 + (void)updateWithCompletionHandler:(void (^)(BOOL success))completionHandler;
 
-/**  manually fetch latest localisation updates from Applanga for given group and languages
- @param completionHandler handler that gets triggered when the localisation update finishes
+/**  manually fetch latest localization updates from Applanga for given group and languages
+ @param groups array with groups that should be updated (nil defaults to 'main' group)
+ @param languages array of languages that should be updated (nil defaults to current + base langauge)
+ @param completionHandler handler that gets triggered when the localization update finishes
  */
 + (void)updateGroups:(NSArray*)groups andLanguages:(NSArray*)languages withCompletionHandler:(void (^)(BOOL success))completionHandler;
 
 
 /** get localized string for current language and given key
+ @param key the string key from Applanga
+ @param value the defaultvalue that should be used if the key does not exist or is empty (the default value will also be uploaded to Applanga)
  */
 + (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value;
+
+/** *!!!DEPRECATED!!!* please see: localizedStringForKey:withDefaultValue:
+ @param key the string key from Applanga
+ */
 + (NSString*)localizedStringForKey:(NSString*)key __attribute__((deprecated));
 
-/** get localized string for given key and arguments
+/** get localized string for given key, defaultValue and arguments
+ @param key the string key from Applanga
+ @param value the defaultvalue that should be used if the key does not exist or is empty (the default value will also be uploaded to Applanga)
+ @param arguments dictionary with named arguments that will be replaced int the string
  */
 + (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments;
+
+/** *!!!DEPRECATED!!!* please see: localizedStringForKey:withDefaultValue:andArguments:
+ @param key the string key from Applanga
+ @param arguments dictionary with named arguments that will be replaced int the string
+ */
 + (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments __attribute__((deprecated));
 
 /** get localized string for given key, arguments and pluralisation
+ @param key the string key from Applanga
+ @param value the defaultvalue that should be used if the key does not exist or is empty (the default value will also be uploaded to Applanga)
+ @param arguments dictionary with named arguments that will be replaced int the string
+ @param pluralRule the pluralisation / ALPluralRule that should be used
  */
 + (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule;
+
+/** *!!!DEPRECATED!!!* please see: localizedStringForKey:withDefaultValue:andArguments:andPluralRule:
+ @param key the string key from Applanga
+ @param arguments dictionary with named arguments that will be replaced int the string
+ @param pluralRule the pluralisation / ALPluralRule that should be used
+ */
 + (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule __attribute__((deprecated));
 
+/** capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ */
 + (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs;
 
+/** capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ @param completionHandler completion callback when upload is finished
+ */
 + (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs withCompletionHandler: (void (^)(BOOL success))completionHandler;
 
+/** show the tag selection menu to capture a screenshot for a tag
+ @param visible boolean that indicates if menu should be visible(TRUE) or invisible (FALSE)
+ */
 + (BOOL)setScreenShotMenuVisible:(BOOL)visible;
 
 /** change phone language to new language
+ @param language the language iso code
  */
 + (BOOL)setLanguage:(NSString*)language;
 
