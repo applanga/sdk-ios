@@ -1,6 +1,6 @@
 # Applanga SDK for iOS
 ***
-*Version:* 1.0.63
+*Version:* 2.0.66
 
 *URL:* <http://applanga.com> 
 ***
@@ -10,15 +10,23 @@
 
 1. Refer to CocoaPod’s [Getting Started Guide](http://cocoapods.org/#getstarted) for detailed instructions about CocoaPods.
 
-2. After you have created your Podfile, insert this line of code: ***pod 'Applanga'***
+2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`
 
 3. Once you have done so, re-run **pod install** from the command line.
 	
 #### Manual (zero-code)
 
-1. Download the latest release of the Applanga iOS SDK from [Github](https://github.com/applanga/sdk-ios/releases). Unzip it, then drag and drop Applanga.framework into your project. You’ll probably want to check the "Copy items into destination group’s folder (if needed)" option.
+1. Download the latest release of the Applanga iOS SDK from [Github](https://github.com/applanga/sdk-ios/releases). Unzip it, then drag and drop Applanga.framework into into the `Embedded Binaries` section of your target and check the "Copy items into destination group’s folder (if needed)" option.
 
-2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC, -lsqlite3, -lz***. 
+2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC, -lsqlite3, -lz***.
+
+3. To be able to properly upload your app to iTunesConnect you need to work around an App Store submission bug triggered by universal binaries. To do that add a new `Run Script Phase` in your target’s `Build Phases`. **IMPORTANT:** Make sure this `Run Script Phase` is below the `Embed Frameworks` build phase.
+You can drag and drop build phases to rearrange them.
+Paste the following line in this `Run Script Phase`'s script text field:
+
+	```bash
+	bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.framework/strip-framework.sh"
+	```
  
 ## Configuration
 1. Download the *Applanga Settings File* for your app from the Applanga App Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
@@ -36,7 +44,7 @@
 ## Usage
 ### Basic:
 
-- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/UsingtheDebugger.html#//apple_ref/doc/uid/TP40010215-CH57-SW1l) or [Draft Mode](https://applanga.com/#!/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
+- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/debugging_tools.html) or [Draft Mode](https://applanga.com/#!/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
 Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4). If you have additional *".strings"* files that should be automatically uploaded you can add them in your Info.plist with the key **ApplangaAdditionalStringFiles** as a comma seperated list. You don’t need to use any special code. 
 	- With ***Objective-C*** use the native method ***[NSLocalizedStringWithDefaultValue(@"APPLANGA_ID", nil, NSBundle.mainBundle, @"default value", @"")](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue?language=objc)*** 
 	
@@ -56,37 +64,56 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	1.1 **Strings** 
 	
 	```objc
+	//objc
 	// get translated string for the current device locale
 	[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value"];
+	```
+	
+	```swift
+	//swift
+	Applanga.localizedString(forKey: "APPLANGA_ID", withDefaultValue: "default value")
 	```
 
 	1.2 **Named Arguments**
 	
 	```objc
+	//objc
 	// if you pass a string:string dictionary you can get translated string
 	// with named arguments. %{someArg} %{anotherArg} etc.
 	NSDictionary* args = @{@"someArg": @"awesome",@"anotherArg": @"crazy"};
 	[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:args]
 	```
-
-    Example:
-    
-    *APPLANGA_ID* = *"This value of the argument called someArg is %{someArg} and the value of anotherArg is **%{anotherArg}**. You can reuse arguments multiple times in your text wich is **%{someArg}**, **%{anotherArg}** and **%{someArg}.**"*
-    
-    gets converted to:
-    
-    *"This value of the argument called someArg is awesome and the value of anotherArg is crazy. You can reuse arguments multiple times in your text wich is awesome, crazy and awesome."*    
-        
+	
+	```swift
+	//swift
+	var args: [String: String] = ["someArg": "awesome", "anotherArg": "crazy"];
+	Applanga.localizedString(forKey: "APPLANGA_ID", withDefaultValue: "default", andArguments: args)
+	```
+	Example:
+	
+	*APPLANGA_ID* = *"This value of the argument called someArg is %{someArg} and the value of anotherArg is **%{anotherArg}**. You can reuse arguments multiple times in your text wich is **%{someArg}**, **%{anotherArg}** and **%{someArg}.**"*
+	
+	gets converted to:
+	
+	*"This value of the argument called someArg is awesome and the value of anotherArg is crazy. You can reuse arguments multiple times in your text wich is awesome, crazy and awesome."*	
+		
 	1.3 **Pluralisation**
 	
 	```objc
+	//objc
 	// get translated string in given pluralisation rule (one)
 	[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:nil andPluralRule:ALPluralRuleOne]
+	```
+	
+	```swift
+	//swift
+	Applanga.localizedString(forKey: "no default", withDefaultValue: "default", andArguments: nil, andPluralRule: ALPluralRule.one)
 	```
 	
 	Available pluralisation rules:
 	
 	```objc
+	//objc
 	ALPluralRuleZero,
 	ALPluralRuleOne,
 	ALPluralRuleTwo,
@@ -94,17 +121,34 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	ALPluralRuleMany,
 	ALPluralRuleOther
 	```
-	
+	```swift
+	//swift
+	ALPluralRule.zero,
+	ALPluralRule.one,
+	ALPluralRule.two,
+	ALPluralRule.few,
+	ALPluralRule.many,
+	ALPluralRule.other
+	```
 	you can also specify a quantity and Applanga will pick the best pluralisation rule based on: [http://unicode.org/.../language_plural_rules.html	](http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html)
 	
 	```objc
+	//objc
 	// get a string in the given quantity
 	[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:nil andPluralRule:ALPluralRuleForQuantity(quantity)]
 
 	// or get a formatted string with the given quantity
 	[NSString localizedStringWithFormat:[Applanga localizedStringForKey:@"APPLANGA_ID" withDefaultValue:@"default value" andArguments:nil andPluralRule:ALPluralRuleForQuantity(quantity)], quantity]
 	```
+	```swift
+	//swift
+	// get a string in the given quantity
+	Applanga.localizedString(forKey: "APPLANGA_ID", withDefaultValue: "default value", andArguments: nil, andPluralRule: ALPluralRuleForQuantity(quantity))
 	
+	//or get a formatted string with the given quantity
+	NSString.localizedStringWithFormat(NSString(string:(Applanga.localizedString(forKey: "APPLANGA_ID", withDefaultValue: "default", andArguments: nil, andPluralRule: ALPluralRuleForQuantity(quantity)))), quantity)
+	
+	```
 	In the dashboard you create a **puralized ID** by appending the Pluralisation rule to your **ID** in the following format: `[zero]`, `[one]`,`[two]`,`[few]`,`[many]`, `[other]`.
 	
 	So the ***zero*** pluralized ID for ***"APPLANGA_ID"*** is ***"APPLANGA_ID[zero]"***
@@ -114,22 +158,40 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	To trigger an update call:
 	
 	```objc
+	//objc
 	[Applanga updateWithCompletionHandler:^(BOOL success) {
 		//called if update is complete
 	}];
 	```
+	
+	```swift
+	//swift
+	Applanga.update { (success: Bool) in
+		//called if update is complete
+	}
+	```
 
-    This will request the baselanguage, the development language and the long and short versions of the device's current language. If you are using groups, be aware that this will only update the **main** group.
-    	
-    To trigger an update for a specific set of groups and languages call:
-    
+	This will request the baselanguage, the development language and the long and short versions of the device's current language. If you are using groups, be aware that this will only update the **main** group.
+		
+	To trigger an update for a specific set of groups and languages call:
+	
 	```objc
+	//objc
 	NSArray* groups = @[@"GroupA", @"GroupB"];
 	NSArray* languages = @[@"en", @"de", @"fr"];
 	 	
 	[Applanga updateGroups:groups andLanguages:languages withCompletionHandler:^(BOOL success) {
-        		//called if update is complete
+		//called if update is complete
 	}];
+	```
+	```swift
+	//swift
+	var groups: [String] = ["GroupA", "GroupB"]
+	var languages: [String] = ["en", "de", "fr"]
+	
+	Applanga.updateGroups(groups, andLanguages: languages, withCompletionHandler:  {(success: Bool) in
+		//called if update is complete
+	})
 	```
 
 3. **Change Language**
@@ -137,17 +199,25 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
   	You can change your app's language at runtime using the following call:
   	
 	```objc
+	//objc
 	BOOL success = [Applanga setLanguage: language];
 	```
-
-  	 *language* must be the iso string of a language that has been added in 	the dashboard. 
+	```swift
+	//swift
+	var success: Bool = Applanga.setLanguage(language)
+	```
+	*language* must be the iso string of a language that has been added in 	the dashboard. 
   	The return value will be *YES* if the language could be set, or if it already was the 	current language, otherwise it will be *NO*. 
   	The set language will be saved, to reset to the 	device language call:
   	
 	```objc
+	//objc
 	Applanga.setLanguage(nil); 
 	```
-	
+	```swift
+	//swift
+	Applanga.setLanguage(nil);
+	```
   	After a successful call you need to reinitialize your UI for the changes to 	take effect, for example you might recreate the root Storyboard controller and present it.
   	
   	The *language* parameter is expected in the format **[language]-[region]** or 	**[language]_[region]** with region being optional. Examples: "fr_CA", "en-us", "de". 
@@ -173,15 +243,15 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	Applanga can also translate content in your WebViews if it is enabled.
 	
 	Add `ApplangaTranslateWebViews` set to `YES` to your Info.plist to enable translation support for all WebViews.
-    
-    To initalize Applanga for your webcontent you need to initialize Applanga from JavaScript:
-    
+	
+	To initalize Applanga for your webcontent you need to initialize Applanga from JavaScript:
+	
 	```javascript
 	<script type="text/javascript">
 		window.initApplanga = function() {
 			if(typeof window.ApplangaNative !== 'undefined') { window.ApplangaNative.loadScript();
-      		} else { setTimeout(window.initApplanga, 180); } 
-      	}; window.initApplanga();
+	  		} else { setTimeout(window.initApplanga, 180); } 
+	  	}; window.initApplanga();
 	</script>
 	```
 
@@ -285,7 +355,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	
 	```javascript
 	Applanga.updateGroups("GroupA, GroupB", "de, en, fr", function(success){
- 		//called if update is complete
+		//called if update is complete
 	});		
 	```
 
@@ -310,7 +380,12 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
  	You also have the option to open the screenshot menu programmatically, this also requires the app to be in draft mode:
 
 	```objc
+	//objc
 	[Applanga setScreenShotMenuVisible:YES]
+	```
+	```swift
+	//swift
+	Applanga.setScreenShotMenuVisible(true)
 	```
 
  	5.3 **Make screenshots programmatically**
@@ -318,11 +393,18 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
  	To create a screenshot programmatically you call the following function:
  	
 	```objc
+	//objc
 	NSString* tag = @"MainMenu";
 	NSArray* applangaIDs = [NSArrayarrayWithObjects:@"String1",@"String2",@"String3",nil];
 	[Applanga captureScreenshotWithTag:tag andIDs:applangaIDs];
 	```
-
+	```swift
+	//swift
+	var tag:String = "MainMenu"
+	var applangaIDs:[String] = ["String1", "String2", "String3"]
+	Applanga.captureScreenshot(withTag: tag, andIDs: applangaIDs)
+	```
+	
  	The Applanga SDK tries to find all IDs on the screen but you can also pass additional IDs in the **applangaIDs** parameter. 
  	
  	5.4 **Automated during UITests**
@@ -330,6 +412,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
  	To capture screenshots from UITests running in xcode you first have to add a specific launch argument in your test classes setup function:
 
 	```objc
+	//objc
 	- (void)setUp {
 			[super setUp];
 			XCUIApplication *app =[[XCUIApplication alloc] init];
@@ -338,30 +421,61 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	}
 	```
 
+	```swift
+	//swift
+	override func setUp() {
+		super.setUp()
+		let app = XCUIApplication();
+		app.launchArguments.append("ApplangaUITestScreenshotEnabled");
+		app.launch();
+	}
+    ```
+
  	Now you can capture screenshots as shown in the following example:
  	
 	```objc
+	//objc
 	- (void)testExample2 {
 
-    		XCUIApplication *app = [app init];
-    
-    		//open screenshot menu by tapping invisible Applanga button
-    		[app.buttons[@"Applanga.ToggleScreenShotMenu"] tap];
-    		//toggle tag selection
-    		[app.buttons[@"Applanga.SelectTag"] tap];
-    		//select tag named "MainMenu"
-    		[app.tables.staticTexts[@"MainMenu"] tap];
-    		//capture screenshot
-    		[app.buttons[@"Applanga.CaptureScreen"] tap];
-    
-    		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
-    		NSPredicate *waitPredicate = [NSPredicate predicateWithFormat:@"exists == 1"];
-    		[self expectationForPredicate:waitPredicate evaluatedWithObject:app.buttons[@"Applanga.SelectTag"] handler:nil];
-    		[self waitForExpectationsWithTimeout:30 handler:nil];
-    		...
-    }		
+		XCUIApplication *app = [app init];
+	
+		//open screenshot menu by tapping invisible Applanga button
+		[app.buttons[@"Applanga.ToggleScreenShotMenu"] tap];
+		//toggle tag selection
+		[app.buttons[@"Applanga.SelectTag"] tap];
+		//select tag named "MainMenu"
+		[app.tables.staticTexts[@"MainMenu"] tap];
+		//capture screenshot
+		[app.buttons[@"Applanga.CaptureScreen"] tap];
+	
+		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
+		NSPredicate *waitPredicate = [NSPredicate predicateWithFormat:@"exists == 1"];
+		[self expectationForPredicate:waitPredicate evaluatedWithObject:app.buttons[@"Applanga.SelectTag"] handler:nil];
+		[self waitForExpectationsWithTimeout:30 handler:nil];
+		...
+	}		
 	```
-    	
+
+	```swift
+	//swift
+	func testExample() {
+		let app = XCUIApplication();
+        
+		//open screenshot menu by tapping invisible Applanga button
+		app.buttons["Applanga.ToggleScreenShotMenu"].tap();
+		app.buttons["Applanga.SelectTag"].tap();
+		app.tables.staticTexts["Main"].tap();
+		app.buttons["Applanga.CaptureScreen"].tap();
+
+		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
+		let predicate = NSPredicate(format: "exists == 1")
+		let query = XCUIApplication().buttons["Applanga.SelectTag"];
+		expectation(for: predicate, evaluatedWith: query, handler: nil)
+		waitForExpectations(timeout: 3, handler: nil)
+    }
+    ```
+
+		
 ## Optional settings
 
 You can specify a set of default groups and languages in your plist, which will be updated on every Applanga.update() or Applanga.updateGroups() call. These groups and languages will be added to any that are specified in the call itself, they will *always* be requested.
