@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name                = "Applanga"
-  s.version             = "2.0.67"
+  s.version             = "2.0.68"
   s.summary             = "This is the iOS SDK for Applanga."
   s.homepage            = "http://applanga.com"
   s.license             = { :type => 'Commercial', :file => 'LICENSE' }
   s.author              = { "Mbaas Development GmbH" => "developer@applanga.com" }
-  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "2.0.67" }
+  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "2.0.68" }
   s.platform            = :ios, '8.0'
   s.frameworks          = 'SystemConfiguration'
   s.library             = 'sqlite3', 'z'
