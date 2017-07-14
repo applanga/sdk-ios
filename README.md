@@ -1,6 +1,6 @@
 # Applanga SDK for iOS
 ***
-*Version:* 2.0.71
+*Version:* 2.0.72
 
 *URL:* <http://applanga.com> 
 ***
@@ -13,7 +13,14 @@
 2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`
 
 3. Once you have done so, re-run **pod install** from the command line.
-	
+
+#### Carthage [[?](https://github.com/Carthage/Carthage)]
+1. If you are new to Carthage, please refer to their [documentation](https://github.com/Carthage/Carthage#installing-carthage) first.
+
+2. Add the following line to your Cartfile `github "applanga/sdk-ios" ~> 2.0`.
+
+3. Run `carthage update` from the command line and link the ***Applanga.framework*** to your project as it is described in the carthage documentation: [Getting started for iOS](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
+
 #### Manual (zero-code)
 
 1. Download the latest release of the Applanga iOS SDK from [Github](https://github.com/applanga/sdk-ios/releases). Unzip it, then drag and drop Applanga.framework into into the `Embedded Binaries` section of your target and check the "Copy items into destination group’s folder (if needed)" option.
