@@ -95,6 +95,19 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule __attribute__((deprecated));
 
+/** *!!!SLOW!!!* should not be used often
+ * returns a list of all localized strings for given language
+ @param language the language iso code
+ */
++ (NSDictionary*)localizedStringsForLanguage:(NSString*)language;
+
+/** *!!!SLOW!!!* should not be used often
+ * returns a list of all localized strings for current language
+ */
++ (NSDictionary*)localizedStringsForCurrentLanguage;
+
+
+
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
  @param applangaIDs optional array of ids that should be linked in this screenshot
@@ -117,7 +130,6 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  @param language the language iso code
  */
 + (BOOL)setLanguage:(NSString*)language;
-
 
 /** reset the instance and saved values
  */
