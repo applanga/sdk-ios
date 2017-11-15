@@ -1,8 +1,8 @@
 # Applanga SDK for iOS
 ***
-*Version:* 2.0.75
+*Version:* 2.0.76
 
-*URL:* <http://applanga.com> 
+*URL:* <https://applanga.com> 
 ***
 
 ## Installation
@@ -51,7 +51,7 @@ Paste the following line in this `Run Script Phase`'s script text field:
 ## Usage
 ### Basic:
 
-- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/debugging_tools.html) or [Draft Mode](https://applanga.com/#!/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used. 
+- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/debugging_tools.html) or [Draft Mode](https://applanga.com/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used.
 Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4). If you have additional *".strings"* files that should be automatically uploaded you can add them in your Info.plist with the key **ApplangaAdditionalStringFiles** as a comma seperated list. You don’t need to use any special code. 
 	- With ***Objective-C*** use the native method ***[NSLocalizedStringWithDefaultValue(@"APPLANGA_ID", nil, NSBundle.mainBundle, @"default value", @"")](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue?language=objc)*** 
 	
@@ -370,14 +370,14 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
  	
  	To give translators some context for translating strings, the Applanga SDK offers the 	functionality to upload screenshots of your app, while collecting meta data such as the 	currrent language, resolution and the Applanga translated strings that are visible, 	including their positions.
  	Each screenshot will be assigned to a tag. A tag may have multiple screenshots with 	differing core meta data: language, app version, device, platform, OS and resolution. 
- 	You can read more here : [Manage Tags](https://applanga.com/#!/docs#manage_tags) and here: 	[Uploading screenshots](https://applanga.com/#!/docs#uploading_screenshots).
+ 	You can read more here : [Manage Tags](https://applanga.com/docs#manage_tags) and here: 	[Uploading screenshots](https://applanga.com/docs#uploading_screenshots).
  	
  	5.1 **Make screenshots manually**
  	
- 	To manually make a screenshot you first have to set your app into [draft mode](https://applanga.com/#!/docs#draft_on_device_testing).
+ 	To manually make a screenshot you first have to set your app into [draft mode](https://applanga.com/docs#draft_on_device_testing).
  	 
  	With your app in draft mode, all you have to do is to make a two finger swipe downwards.
- 	This will show the screenshot menu and load a list of [tags](https://applanga.com/#!/docs#manage_tags). 
+ 	This will show the screenshot menu and load a list of [tags](https://applanga.com/docs#manage_tags).
  	
  	You can now choose a tag and press *capture screenshot* to capture and upload a screenshot including all meta data for the currently visible screen and assign it to the selected tag.
  	Tags have to be created in the dashboard before they are available in the screenshot menu.
