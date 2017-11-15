@@ -4,7 +4,7 @@
 ***
 
 
-### Version 2.0.79 (15 Nov 2017)
+### Version 2.0.80 (15 Nov 2017)
 #### Changed
 - xcode9 build
 - added changelog
