@@ -1,9 +1,14 @@
-# Applanga SDK for iOS CHANGELOG
+# Applanga SDK for iOS Localization CHANGELOG
 ***
-*URL:* <https://applanga.com> 
+*URL:* <https://www.applanga.com> 
 ***
 
 
+### Version 2.0.81 (24 Nov 2017)
+#### Changed
+- added full bitcode support
+
+---
 ### Version 2.0.80 (15 Nov 2017)
 #### Changed
 - xcode9 build

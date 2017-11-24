@@ -1,8 +1,8 @@
-# Applanga SDK for iOS
+# Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.80
+*Version:* 2.0.81
 
-*URL:* <https://applanga.com> 
+*URL:* <https://www.applanga.com> 
 ***
 
 ## Installation
@@ -23,7 +23,7 @@
 
 #### Manual (zero-code)
 
-1. Download the latest release of the Applanga iOS SDK from [Github](https://github.com/applanga/sdk-ios/releases). Unzip it, then drag and drop Applanga.framework into into the `Embedded Binaries` section of your target and check the "Copy items into destination group’s folder (if needed)" option.
+1. If you want to translate your iOS app download the latest release of the Applanga iOS SDK from [Github](https://github.com/applanga/sdk-ios/releases). Unzip it, then drag and drop Applanga.framework into into the `Embedded Binaries` section of your target and check the "Copy items into destination group’s folder (if needed)" option.
 
 2. Under the ***Build Settings*** tab, you need to change ***Basic*** to ***All*** and search for ***Other Linker Flags***. Double click on the white space to the right of Other Linker Flags and a popup will open. Click the plus (+), and add ***-ObjC, -lsqlite3, -lz***.
 
@@ -36,7 +36,7 @@ Paste the following line in this `Run Script Phase`'s script text field:
 	```
  
 ## Configuration
-1. Download the *Applanga Settings File* for your app from the Applanga App Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
+1. To start iOS Localization with Applanga download the *Applanga Settings File* for your app from the App Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
  
 2. Add the *Applanga Settings File* to your apps resources. It will be automatically loaded.
  
