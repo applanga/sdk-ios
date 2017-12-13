@@ -4,14 +4,19 @@
 ***
 
 
+### Version 2.0.82 (13 Dec 2017)
+#### Added
+- automatic settingsfile update
+
+---
 ### Version 2.0.81 (24 Nov 2017)
-#### Changed
-- added full bitcode support
+#### Added
+- full bitcode support
 
 ---
 ### Version 2.0.80 (15 Nov 2017)
 #### Changed
-- xcode9 build
+- xcode9 build support
 - added changelog
 
 ---
