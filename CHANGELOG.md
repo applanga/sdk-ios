@@ -4,7 +4,7 @@
 ***
 
 
-### Version 2.0.82 (13 Dec 2017)
+### Version 2.0.83 (4 Jan 2018)
 #### Added
 - automatic settingsfile update
 
