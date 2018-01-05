@@ -4,10 +4,15 @@
 ***
 
 
-### Version 2.0.86 (5 Jan 2018)
+### Version 2.0.87 (5 Jan 2018)
+#### Added
+- carthage build fix
+
+---
+### Version 2.0.82 (5 Jan 2018)
 #### Added
 - automatic settingsfile update
-
+ 
 ---
 ### Version 2.0.81 (24 Nov 2017)
 #### Added

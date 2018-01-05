@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.86
+*Version:* 2.0.87
 
 *URL:* <https://www.applanga.com> 
 ***
@@ -540,8 +540,14 @@ You can specify a set of default groups and languages in your plist, which will 
 	python "$SOURCE_ROOT/Pods/Applanga/Applanga.framework/settingsfile_update.py" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	
-	or (if you are using Carthage or integrated the Applanga SDK manually):
+	or if you are using Carthage:
 
+	```
+	python "$SOURCE_ROOT/Carthage/Checkouts/sdk-ios/Applanga.framework/settingsfile_update.py" "$SOURCE_ROOT/$TARGET_NAME"
+	```
+	
+	or if you are integrated the Applanga SDK manually:
+	
 	```
 	python "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.framework/settingsfile_update.py" "$SOURCE_ROOT/$TARGET_NAME"
 	```
