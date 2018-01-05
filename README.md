@@ -1,9 +1,18 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.85
+*Version:* 2.0.86
 
 *URL:* <https://www.applanga.com> 
 ***
+
+
+## Table of Contents
+
+  1. [Installation](#installation)
+  1. [Configuration](#configuration)
+  1. [Usage](#usage)
+  1. [Optional settings](#optional-settings)
+
 
 ## Installation
 #### CocoaPods [[?](http://cocoapods.org)]
