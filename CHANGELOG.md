@@ -4,7 +4,7 @@
 ***
 
 
-### Version 2.0.87 (5 Jan 2018)
+### Version 2.0.88 (5 Jan 2018)
 #### Added
 - carthage build fix
 
