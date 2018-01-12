@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.88
+*Version:* 2.0.89
 
 *URL:* <https://www.applanga.com> 
 ***
@@ -537,23 +537,23 @@ You can specify a set of default groups and languages in your plist, which will 
 	In XCode you go to `Build Phases` and `New Run Script Phase` and add the following line (if you are using CocoaPods):
 
 	```
-	python "$SOURCE_ROOT/Pods/Applanga/Applanga.framework/settingsfile_update.py" "$SOURCE_ROOT/$TARGET_NAME"
+	bash "$SOURCE_ROOT/Pods/Applanga/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	
 	or if you are using Carthage:
 
 	```
-	python "$SOURCE_ROOT/Carthage/Checkouts/sdk-ios/Applanga.framework/settingsfile_update.py" "$SOURCE_ROOT/$TARGET_NAME"
+	bash "$SOURCE_ROOT/Carthage/Checkouts/sdk-ios/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	
 	or if you are integrated the Applanga SDK manually:
 	
 	```
-	python "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.framework/settingsfile_update.py" "$SOURCE_ROOT/$TARGET_NAME"
+	bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	--
 	Optionally you can also run the update script manually from the command line. Navigate to the `Applanga.framework` directory, where `settingsfile_update.py` is located and run:
 
 	```
-	python settingsfile_update.py ${YOUR TARGET DIRECTORY PATH}
+	bash update-settingsfile.sh ${YOUR TARGET DIRECTORY PATH}
 	```

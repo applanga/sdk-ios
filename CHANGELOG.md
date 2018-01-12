@@ -4,6 +4,11 @@
 ***
 
 
+### Version 2.0.89 (12 Jan 2018)
+#### Fixed
+- fixed issue that prevented archive due to automatic settingsfile update script
+
+---
 ### Version 2.0.88 (5 Jan 2018)
 #### Added
 - carthage build fix
