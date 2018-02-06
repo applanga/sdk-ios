@@ -3,7 +3,11 @@
 *URL:* <https://www.applanga.com> 
 ***
 
+### Version 2.0.90 (6 Feb 2018)
+#### Added
+- proxy support
 
+---
 ### Version 2.0.89 (12 Jan 2018)
 #### Fixed
 - fixed issue that prevented archive due to automatic settingsfile update script
