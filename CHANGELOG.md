@@ -3,7 +3,13 @@
 *URL:* <https://www.applanga.com> 
 ***
 
-### Version 2.0.90 (6 Feb 2018)
+### Version 2.0.91 (27 Feb 2018)
+#### Fixed
+- app extension upload warnings
+- ui tests automated screenshots
+
+---
+Version 2.0.90 (6 Feb 2018)
 #### Added
 - proxy support
 

@@ -5,7 +5,7 @@
 //  https://www.applanga.com
 //
 //  Created by Steffen Römer on 03/12/14.
-//  Copyright (c) 2015 Mbaas Development GmbH. All rights reserved.
+//  Copyright (c) 2018 Mbaas Development GmbH. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -27,11 +27,11 @@ typedef NS_ENUM(NSInteger, ALPluralRule) {
  *
  * *NOTE:* In most cases you do not need to manually call any of the Applanga methods and you can simply use [NSLocalizedStringWithDefaultValue(@“APPLANGA_ID”, nil, NSBundle.mainBundle, @“default value”, @“”)](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue)
  *
- * *Website*: [https://applanga.com](https://applanga.com)
+ * *Website*: [https://www.applanga.com](https://applanga.com)
  *
- * *Platform Docs*: [https://applanga.com/#!/docs](https://applanga.com/#!/docs)
+ * *Platform Docs*: [https://www.applanga.com/docs](https://www.applanga.com/docs)
  *
- * *Integration Docs*: [https://applanga.com/#!/docs/integration/ios](https://applanga.com/#!/docs/integration/ios)
+ * *Integration Docs*: [https://www.applanga.com/docs-integration/ios](https://www.applanga.com/docs-integration/ios)
  *
  * ---
  */
@@ -130,6 +130,15 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  @param language the language iso code
  */
 + (BOOL)setLanguage:(NSString*)language;
+
+/** enable or disable Applanga
+ @param enabled true if applanga should be active (default)
+ */
++ (void)setEnabled:(BOOL)enabled;
+
+/** is Applanga set to be enabled (default: true)
+ */
++ (BOOL)enabled;
 
 /** reset the instance and saved values
  */
