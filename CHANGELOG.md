@@ -3,7 +3,11 @@
 *URL:* <https://www.applanga.com> 
 ***
 
+### Version 2.0.94 (1 Mar 2018)
+#### Fixed
+- removed all app extension warnings
 
+---
 ### Version 2.0.93 (1 Mar 2018)
 #### Fixed
 - [UIApplication sharedApplication] nil fix
