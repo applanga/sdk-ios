@@ -3,7 +3,7 @@
 *URL:* <https://www.applanga.com> 
 ***
 
-### Version 2.0.95 (13 Mar 2018)
+### Version 2.0.96 (28 Mar 2018)
 #### Fixed
 - ui test / automatic screenshots are now working again also when the app is running from the commandline
 
