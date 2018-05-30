@@ -3,7 +3,7 @@
 *URL:* <https://www.applanga.com> 
 ***
 
-### Version 2.0.99 (30 May 2018)
+### Version 2.0.102 (30 May 2018)
 #### Added
 - support for uploading .string files from linked .frameworks
 
