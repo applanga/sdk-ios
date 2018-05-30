@@ -1,17 +1,19 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.97
+*Version:* 2.0.99
 
-*URL:* <https://www.applanga.com> 
+*Website:* <https://www.applanga.com> 
+
+*Changelog:* <https://www.applanga.com/changelog/ios>
 ***
 
 
 ## Table of Contents
 
   1. [Installation](#installation)
-  1. [Configuration](#configuration)
-  1. [Usage](#usage)
-  1. [Optional settings](#optional-settings)
+  2. [Configuration](#configuration)
+  3. [Usage](#usage)
+  4. [Optional settings](#optional-settings)
 
 
 ## Installation

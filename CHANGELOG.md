@@ -3,6 +3,11 @@
 *URL:* <https://www.applanga.com> 
 ***
 
+### Version 2.0.99 (30 May 2018)
+#### Added
+- support for uploading .string files from linked .frameworks
+
+---
 ### Version 2.0.97 (28 Mar 2018)
 #### Fixed
 - screenshot fix for NSAttributedString
