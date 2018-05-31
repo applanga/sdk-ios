@@ -3,6 +3,11 @@
 *URL:* <https://www.applanga.com> 
 ***
 
+### Version 2.0.103 (31 May 2018)
+#### Added
+- support for delta string updates / smaller response size
+
+---
 ### Version 2.0.102 (30 May 2018)
 #### Added
 - support for uploading .string files from linked .frameworks
