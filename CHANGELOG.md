@@ -1,8 +1,15 @@
 # Applanga SDK for iOS Localization CHANGELOG
 ***
-*URL:* <https://www.applanga.com> 
-***
+*Website:* <https://www.applanga.com> 
 
+*Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
+***
+### Version 2.0.104 (25 Jun 2018)
+#### Added
+- documentation update for automated push notification localization
+- documentation update for App Name localization and Usage description Localization e.g. (CFBundleDisplayName, NSCalendarsUsageDescription, NSPhotoLibraryUsageDescription, NSCameraUsageDescription, NSHealthShareUsageDescription, NSHealthUpdateUsageDescription)
+
+---
 ### Version 2.0.103 (31 May 2018)
 #### Added
 - support for delta string updates / smaller response size
