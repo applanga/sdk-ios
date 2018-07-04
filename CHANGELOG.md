@@ -4,7 +4,7 @@
 
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
-### Version 2.0.104 (25 Jun 2018)
+### Version 2.0.105 (4 Jul 2018)
 #### Added
 - documentation update for automated push notification localization
 - documentation update for App Name localization and Usage description Localization e.g. (CFBundleDisplayName, NSCalendarsUsageDescription, NSPhotoLibraryUsageDescription, NSCameraUsageDescription, NSHealthShareUsageDescription, NSHealthUpdateUsageDescription)
