@@ -4,6 +4,12 @@
 
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
+
+### Version 2.0.106 (26 Jul 2018)
+#### Fixed
+- draft mode not opening because keyWindow not found
+
+---
 ### Version 2.0.105 (4 Jul 2018)
 #### Added
 - documentation update for automated push notification localization
