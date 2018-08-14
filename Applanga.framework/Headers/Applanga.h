@@ -106,7 +106,7 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (NSDictionary*)localizedStringsForCurrentLanguage;
 
-
++ (NSDictionary*) localizeMap:(NSDictionary*)map;
 
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
