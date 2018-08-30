@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.109 (30 Aug 2018)
+#### Fixed
+- new carthage binary support
+
+---
 ### Version 2.0.108 (15 Aug 2018)
 #### Fixed
 - fixed crash on app extension check if UIApplication load is called twice
