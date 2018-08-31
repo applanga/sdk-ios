@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.110
+*Version:* 2.0.112
 
 *Website:* <https://www.applanga.com> 
 
@@ -28,7 +28,11 @@
 #### Carthage [[?](https://github.com/Carthage/Carthage)]
 1. If you are new to Carthage, please refer to their [documentation](https://github.com/Carthage/Carthage#installing-carthage) first.
 
-2. Add the following line to your Cartfile `github "applanga/sdk-ios" ~> 2.0`.
+2. Add the following line to your Cartfile:
+
+	```
+	binary "https://raw.githubusercontent.com/applanga/sdk-ios/master/Applanga.json" ~> 2.0
+	```
 
 3. Run `carthage update` from the command line and link the ***Applanga.framework*** to your project as it is described in the carthage documentation: [Getting started for iOS](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
