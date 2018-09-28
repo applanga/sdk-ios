@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.113 (28 Sep 2018)
+#### Added
+- method to show draftmode dialog programmatically
+
+---
 ### Version 2.0.112 (31 Aug 2018)
 #### Fixed
 - carthage localization integration documentation

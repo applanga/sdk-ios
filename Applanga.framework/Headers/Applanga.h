@@ -126,6 +126,10 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (BOOL)setScreenShotMenuVisible:(BOOL)visible;
 
+/** show the dialog to enable or disable draft mode
+ */
++ (void)showDraftModeDialog;
+
 /** change phone language to new language
  @param language the language iso code
  */
