@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.113
+*Version:* 2.0.114
 
 *Website:* <https://www.applanga.com> 
 
@@ -14,6 +14,7 @@
   2. [Configuration](#configuration)
   3. [Usage](#usage)
   4. [Optional settings](#optional-settings)
+  5. [Push Notifications & Info.plist](#automatic-push-notification-localization-and-infopliststrings)
 
 
 ## Installation
@@ -557,6 +558,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	--
+	
 	Optionally you can also run the update script manually from the command line. Navigate to the `Applanga.framework` directory, where `settingsfile_update.py` is located and run:
 
 	```
@@ -566,3 +568,5 @@ You can specify a set of default groups and languages in your plist, which will 
 ## Automatic Push Notification Localization and InfoPlist.strings
 
 With the Applanga SDK you can only localize local notifications because remote notifications, the app display name (CFBundleDisplayName) as well as the several other NS*UsageDescription etc strings defined in your Info.plist are not using the app runtime and therefore can not be localized at runtime with a SDK. For these kind of strings you can use the [Applanga Command Line Interface](https://www.applanga.com/docs-integration/cli) to manage the strings on the [Applanga Dashboard](https://dashboard.applanga.com) and update the InfoPlist.strings files whenever you create a new build.
+
+For more details on that please have a look at our blogpost on [Translating Push Notifications and Info.plist localization](https://www.applanga.com/blog/infoplist-strings-and-ios-push-notification-localization-automation/).
