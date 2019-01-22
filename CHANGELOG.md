@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.117 (22 Jan 2019)
+### Version 2.0.118 (22 Jan 2019)
 #### Fixed
 - settingsfile update fix
 
