@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.117 (22 Jan 2019)
+#### Fixed
+- settingsfile update fix
+
+---
 ### Version 2.0.116 (6 Dec 2018)
 #### Fixed
 - crash on number value response
