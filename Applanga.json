@@ -1,4 +1,5 @@
 {
+    "2.0.120": "https://github.com/applanga/sdk-ios/releases/download/2.0.120/Applanga.framework.zip", 
     "2.0.118": "https://github.com/applanga/sdk-ios/releases/download/2.0.118/Applanga.framework.zip", 
     "2.0.108": "https://github.com/applanga/sdk-ios/releases/download/2.0.108/Applanga.framework.zip", 
     "2.0.109": "https://github.com/applanga/sdk-ios/releases/download/2.0.109/Applanga.framework.zip", 
@@ -28,6 +29,5 @@
     "2.0.114": "https://github.com/applanga/sdk-ios/releases/download/2.0.114/Applanga.framework.zip", 
     "2.0.113": "https://github.com/applanga/sdk-ios/releases/download/2.0.113/Applanga.framework.zip", 
     "2.0.112": "https://github.com/applanga/sdk-ios/releases/download/2.0.112/Applanga.framework.zip", 
-    "2.0.110": "https://github.com/applanga/sdk-ios/releases/download/2.0.110/Applanga.framework.zip", 
-    "2.0.75": "https://github.com/applanga/sdk-ios/releases/download/2.0.75/Applanga.framework.zip"
+    "2.0.110": "https://github.com/applanga/sdk-ios/releases/download/2.0.110/Applanga.framework.zip"
 }
