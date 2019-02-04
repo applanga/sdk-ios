@@ -21,7 +21,9 @@ get_script_dir () {
 
 get_script_dir
 
-APPLANGA_FRAMEWORK_BUNDLEID=$(defaults read $APPLANGA_FRAMEWORK_DIR/Info CFBundleShortVersionString)
+echo "Applanga SDK Path: $APPLANGA_FRAMEWORK_DIR"
+APPLANGA_FRAMEWORK_BUNDLEID=$(defaults read "$APPLANGA_FRAMEWORK_DIR/Info" CFBundleShortVersionString)
+echo "Applanga SDK Version: $APPLANGA_FRAMEWORK_BUNDLEID"
 
 APPLANGA_DOWNLOAD_SCRIPTPATH=/tmp/Applanga-Scripts/${APPLANGA_FRAMEWORK_BUNDLEID}/settingsfile_update.py
 if [ ! -f "${APPLANGA_DOWNLOAD_SCRIPTPATH}" ]; then

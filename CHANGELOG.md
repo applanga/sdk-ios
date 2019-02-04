@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.121 (4 Feb 2019)
+#### Fixed
+- fixed settingsfile update on path with spaces and quotes
+
+---
 ### Version 2.0.120 (28 Jan 2019)
 #### Fixed
 - fixed missing ids in screenshots when using Applanga.localizedString
