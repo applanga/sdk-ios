@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.122 (11 Mar 2019)
+#### Fixed
+- fixed 1 second freeze on app start
+
+---
 ### Version 2.0.121 (4 Feb 2019)
 #### Fixed
 - fixed settingsfile update on path with spaces and quotes
