@@ -45,7 +45,7 @@ for root, dirs, files in os.walk(projectPath):
 				print "Settingsfile parsing error"
 			else:	
 				try:
-					url = "%sv1/mobile-apps/%s/updateSettings?apiSecret=%s&lastVersion=%s&%s" % (baseUrl, appId, apiSecret, lastVersion, urllib.urlencode({'groupIds[]': fix_unicode(groupIds)}, True))
+					url = "%sv1/projects/%s/updateSettings?apiSecret=%s&lastVersion=%s&%s" % (baseUrl, appId, apiSecret, lastVersion, urllib.urlencode({'groupIds[]': fix_unicode(groupIds)}, True))
 					responseJson = json.loads(urllib2.urlopen(url).read())
 					if responseJson["update"] == True:
 						os.remove(path)
