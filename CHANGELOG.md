@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.125 (18 Jul 2019)
+### Version 2.0.126 (18 Jul 2019)
 #### Fixed
 - added support for sr and sr-Latn
 
