@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.127 (9 Aug 2019)
+#### Added
+- added ApplangaInitialUpdate setting
+- added support for async javascript localization calls in WKWebViews
+
+---
 ### Version 2.0.126 (18 Jul 2019)
 #### Fixed
 - added support for sr and sr-Latn

@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.126
+*Version:* 2.0.127
 
 *Website:* <https://www.applanga.com> 
 
@@ -269,7 +269,9 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	
 	Add `ApplangaTranslateWebViews` set to `YES` to your Info.plist to enable translation support for all WebViews.
 	
-	To initalize Applanga for your webcontent you need to initialize Applanga from JavaScript:
+	There are some differences if you use the deprecated `UIWebView` or the newer `WKWebView` whereas direct Applanga calls in `UIWebView` ar synchronous but in `WKWebView` the need to be async.
+	
+	To initalize Applanga for your webcontent in a `UIWebView` you need to initialize Applanga from JavaScript like this:
 	
 	```javascript
 	<script type="text/javascript">
@@ -279,6 +281,8 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	  	}; window.initApplanga();
 	</script>
 	```
+	
+	This is not needed if you use a `WKWebView`.
 
 	4.1 **Strings**
 		
@@ -290,7 +294,16 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	</div>
 	```
 	
-	Alternatively you can call `Applanga.getString('APPLANGA_ID')` directly.
+	Alternatively you can call `Applanga.getString` directly like this:
+	
+	```javascript
+	//UIWebView
+	translation = Applanga.getString('APPLANGA_ID')
+	//WKWebView
+	Applanga.getString('APPLANGA_ID', undefined, undefined,  undefined, undefined, undefined, 
+	 function(translation) {
+	})
+	```
 	
 	4.2 **Arguments**
 	
@@ -303,10 +316,15 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		***and formatted with arguments***
 	</div>
 	```
-	Direct call : 
+	Direct call: 
 	
 	```javascript
-	Applanga.getString('APPLANGA_ID', 'arg1,arg2,etc')
+	//UIWebView
+	translation = Applanga.getString('APPLANGA_ID', 'arg1,arg2,etc')
+	//WKWebView
+	Applanga.getString('APPLANGA_ID', 'arg1,arg2,etc', undefined,  undefined, undefined, undefined, 
+	 function(translation) {
+	})
 	```
 	
 	To define a different separator instead of ```,``` e.g. if your arguments contain commas use ```applanga-args-separator```.
@@ -320,10 +338,15 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	</div> 
 	```
 
-	Direct call : 
+	Direct call: 
 	
 	```javascript
-	Applanga.getString('APPLANGA_ID', 'arg1,arg2,etc', ';')
+	//UIWebView
+	translation = Applanga.getString('APPLANGA_ID', 'arg1,arg2,etc', ';')
+	//WKWebView
+	Applanga.getString('APPLANGA_ID', 'arg1,arg2,etc', ';',  undefined,  undefined,  undefined, 
+	 function(translation) {
+	})
 	```
 		
 	One Dimensional **JSON** Objects can also be used as ***Named Arguments*** if you add `applanga-args-separator="json"`
@@ -336,10 +359,15 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 			***and formatted with json arguments***
 	</div> 
 	```
-	 Direct call : 
+	 Direct call: 
 	 
 	 ```javascript
-	 Applanga.getString('APPLANGA_ID', "{'arg1':'value1', 'arg2':'value2', 'arg3':'etc'}", 'json')
+	 //UIWebView
+	 translation = Applanga.getString('APPLANGA_ID', "{'arg1':'value1', 'arg2':'value2', 'arg3':'etc'}", 'json')
+	 //WKWebView
+	 Applanga.getString('APPLANGA_ID', "{'arg1':'value1', 'arg2':'value2', 'arg3':'etc'}", 'json',  undefined,  undefined,  undefined, 
+	  function(translation) {
+	})
 	 ```
 	
 	4.3 **Pluralisation**
@@ -352,16 +380,26 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	</div> 
 	```
 
-	Direct call : 
+	Direct call: 
 	
 	```javascript
-	Applanga.getPluralString('APPLANGA_ID', 'one')
+	//UIWebView
+	translation = Applanga.getPluralString('APPLANGA_ID', 'one')
+	//WKWebView
+	Applanga.getPluralString('APPLANGA_ID', 'one', undefined, undefined,
+	 function(translation) {
+	})
 	``` 
 	
-	or with arguments : 	
+	or with arguments: 	
 	
 	```javascript
-	Applanga.getPluralString('APPLANGA_ID', 'one', 'arg1;arg2;etc', ';')
+	//UIWebView
+	translation = Applanga.getPluralString('APPLANGA_ID', 'one', 'arg1;arg2;etc', ';')
+	//WKWebView
+	Applanga.getPluralString('APPLANGA_ID', 'one', 'arg1;arg2;etc', ';', 
+	 function(translation) {
+	})
 	```
 		
 	You can also pluralize by quantity via `applanga-plural-quantity`
@@ -372,8 +410,28 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	</div> 
 	```
 
-	Direct call : `Applanga.getQuantityString('APPLANGA_ID', 42)` or with arguments : 	`applanga.getQuantityString('APPLANGA_ID', 42, 'arg1;arg2;etc', ';')`	
+	Direct call: 
 	
+	```javascript
+	//UIWebView
+	translation = Applanga.getQuantityString('APPLANGA_ID', 42)
+	//WKWebView
+	Applanga.getQuantityString('APPLANGA_ID', 42,  undefined, undefined, 
+	 function(translation) {
+	})
+	```
+	
+	or with arguments:
+	
+	```javascript
+	//UIWebView
+	translation = Applanga.getQuantityString('APPLANGA_ID', 42, 'arg1;arg2;etc', ';')
+	//WKWebView
+	Applanga.getQuantityString('APPLANGA_ID', 42, 'arg1;arg2;etc', ';', 
+	 function(translation) {
+	})
+	```
+
 	4.4 **Update Content**
 	
 	To trigger a content update from a WebView use javascript:
@@ -564,6 +622,18 @@ You can specify a set of default groups and languages in your plist, which will 
 	```
 	bash update-settingsfile.sh ${YOUR TARGET DIRECTORY PATH}
 	```
+
+5. **Disable automatic string update on init**
+	
+	If you wish to stop the sdk from automatically updating your strings on app launch you can set the following
+
+	```xml
+	...
+   <key>ApplangaInitialUpdate</key>
+	<false/>
+	...
+	```
+	You will still be able to call Applanga.Update() at any time to update your strings
 
 ## Automatic Push Notification Localization and InfoPlist.strings
 
