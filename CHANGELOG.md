@@ -5,8 +5,17 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.127 (9 Aug 2019)
+### Version 2.0.128 (26 Sep 2019)
 #### Added
+- added check for keys longer than 997 bytes to meet database requirements
+- added check for new lines in keys
+
+
+
+---
+### Version 2.0.127 (9 Aug 2019)
+#### Fixed
+
 - added ApplangaInitialUpdate setting
 - added support for async javascript localization calls in WKWebViews
 

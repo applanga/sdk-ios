@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.127
+*Version:* 2.0.128
 
 *Website:* <https://www.applanga.com> 
 
@@ -622,6 +622,11 @@ You can specify a set of default groups and languages in your plist, which will 
 	```
 	bash update-settingsfile.sh ${YOUR TARGET DIRECTORY PATH}
 	```
+
+	To make sure that the script is running and to see when it does or doesnt update, check the build report in the report navigator window in xcode. There you will find logs for each update step.
+
+    If the file is update successfully you shoudl see the log "Settingsfile updated!". If it is already up to date you will see the log "Settingsfile up-to-date".
+
 
 5. **Disable automatic string update on init**
 	
