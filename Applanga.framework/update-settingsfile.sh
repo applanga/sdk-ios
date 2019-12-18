@@ -22,7 +22,7 @@ get_script_dir () {
 get_script_dir
 
 echo "Applanga SDK Path: $APPLANGA_FRAMEWORK_DIR"
-APPLANGA_FRAMEWORK_BUNDLEID=$(defaults read "$APPLANGA_FRAMEWORK_DIR/Info" CFBundleShortVersionString)
+APPLANGA_FRAMEWORK_BUNDLEID=$(plutil -extract CFBundleShortVersionString xml1 -o - $APPLANGA_FRAMEWORK_DIR/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p")
 echo "Applanga SDK Version: $APPLANGA_FRAMEWORK_BUNDLEID"
 
 APPLANGA_DOWNLOAD_SCRIPTPATH=/tmp/Applanga-Scripts/${APPLANGA_FRAMEWORK_BUNDLEID}/settingsfile_update.py
