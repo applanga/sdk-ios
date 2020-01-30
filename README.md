@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.129
+*Version:* 2.0.131
 
 *Website:* <https://www.applanga.com> 
 
@@ -14,7 +14,7 @@
   2. [Configuration](#configuration)
   3. [Usage](#usage)
   4. [Optional settings](#optional-settings)
-  5. [Push Notifications & Info.plist](#automatic-push-notification-localization-and-infopliststrings)
+  5. [Localize Push Notifications & Info.plist](#automatic-push-notification-localization-and-infoplist-strings)
 
 
 ## Installation
@@ -523,13 +523,13 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		XCUIApplication *app = [app init];
 	
 		//open screenshot menu by tapping invisible Applanga button
-		[app.buttons[@"Applanga.ToggleScreenShotMenu"] tap];
+		[[app.buttons[@"Applanga.ToggleScreenShotMenu"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
 		//toggle tag selection
-		[app.buttons[@"Applanga.SelectTag"] tap];
+		[[app.buttons[@"Applanga.SelectTag"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
 		//select tag named "MainMenu"
-		[app.tables.staticTexts[@"MainMenu"] tap];
+		[[app.tables.staticTexts[@"MainMenu"]coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
 		//capture screenshot
-		[app.buttons[@"Applanga.CaptureScreen"] tap];
+		[[app.buttons[@"Applanga.CaptureScreen"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
 	
 		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
 		NSPredicate *waitPredicate = [NSPredicate predicateWithFormat:@"exists == 1"];
@@ -649,6 +649,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	<false/>
 	...
 	```
+
 ## Automatic Push Notification Localization and InfoPlist.strings
 
 With the Applanga SDK you can only localize local notifications because remote notifications, the app display name (CFBundleDisplayName) as well as the several other NS*UsageDescription etc strings defined in your Info.plist are not using the app runtime and therefore can not be localized at runtime with a SDK. For these kind of strings you can use the [Applanga Command Line Interface](https://www.applanga.com/docs-integration/cli) to manage the strings on the [Applanga Dashboard](https://dashboard.applanga.com) and update the InfoPlist.strings files whenever you create a new build.
@@ -678,5 +679,11 @@ Although not all Applanga features are supported yet in SwiftUI, you can easily 
 	
    	Text(applangaKey: "hello_world", defaultValue: "Hello World")
 
-	...
-	```
+```
+	
+	
+## TV OS
+
+Automatic translations and draft mode will work on TV OS without requiring any special changes. 
+
+The only feature not avalabile currently is the draft mode screenshot menu.

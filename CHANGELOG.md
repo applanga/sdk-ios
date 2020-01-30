@@ -5,6 +5,15 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.131 (30 Jan 2020)
+#### Added
+- Added screenshot menu support for iOS 13 apps using scene delegates and swiftUI 
+- Including strings with missing keys when taking a screen shot
+- Added support for apple TvOS
+- Sending current language when reporting an issue
+
+---
+
 ### Version 2.0.129 (2 Oct 2019)
 #### Added
 - added check for keys longer than 997 bytes to meet database requirements
