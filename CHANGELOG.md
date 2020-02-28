@@ -5,6 +5,13 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.132 (28 Feb 2020)
+#### Added
+- Screenshots from apps using swiftUI will now be proccessed with OCR
+- Support for flutter OCR screenshots
+
+---
+
 ### Version 2.0.131 (30 Jan 2020)
 #### Added
 - Added screenshot menu support for iOS 13 apps using scene delegates and swiftUI 

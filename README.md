@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.131
+*Version:* 2.0.132
 
 *Website:* <https://www.applanga.com> 
 
@@ -680,7 +680,8 @@ Although not all Applanga features are supported yet in SwiftUI, you can easily 
    	Text(applangaKey: "hello_world", defaultValue: "Hello World")
 
 ```
-	
+### SwiftUI Screenshots
+Screenshots uploaded from SwiftUI apps are proccesed server side with OCR to try and read the texts present as it is not possible yet client side. This means that in rare cases they will not be 100% accurate.
 	
 ## TV OS
 
