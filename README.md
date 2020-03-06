@@ -14,8 +14,10 @@
   2. [Configuration](#configuration)
   3. [Usage](#usage)
   4. [Optional settings](#optional-settings)
-  5. [Localize Push Notifications & Info.plist](#automatic-push-notification-localization-and-infoplist-strings)
+  5. [Localize Push Notifications & Info.plist](#automatic-push-notification-localization-and-infoplist.strings)
+  6. [SwiftUI](#swiftui)
 
+Automatic Push Notification Localization and InfoPlist.strings
 
 ## Installation
 #### CocoaPods [[?](http://cocoapods.org)]
@@ -683,7 +685,7 @@ Although not all Applanga features are supported yet in SwiftUI, you can easily 
 ### SwiftUI Screenshots
 Screenshots uploaded from SwiftUI apps are proccesed server side with OCR to try and read the texts present as it is not possible yet client side. This means that in rare cases they will not be 100% accurate.
 	
-## TV OS
+### TV OS
 
 Automatic translations and draft mode will work on TV OS without requiring any special changes. 
 
