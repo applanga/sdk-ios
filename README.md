@@ -645,7 +645,8 @@ You can specify a set of default groups and languages in your plist, which will 
 6. **Disable Draft Mode**
 
     If you wish to create a build that cannot enable draft mode at any time, you can include the following setting to your plist.
-```xml
+
+	```xml
 	...
    <key>ApplangaDraftModeEnabled</key>
 	<false/>
