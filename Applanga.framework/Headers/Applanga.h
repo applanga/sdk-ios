@@ -144,6 +144,10 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (BOOL)enabled;
 
+/** Applanga set draft mode enabled 
+*/
++ (void)setDraftModelEnabled:(BOOL)enabled;
+
 /** reset the instance and saved values
  */
 + (void)reset;

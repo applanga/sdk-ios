@@ -5,11 +5,18 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.134 (2 Apr 2020)
+#### Added
+- setDraftModeEnabled at runtime
+
+---
+
 ### Version 2.0.133 (18 Mar 2020)
 #### Fixed
 - Settingsfile update for Mojave and above
 
 ---
+
 ### Version 2.0.132 (28 Feb 2020)
 #### Added
 - Screenshots from apps using swiftUI will now be proccessed with OCR

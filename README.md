@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.133
+*Version:* 2.0.134
 
 *Website:* <https://www.applanga.com> 
 
@@ -652,6 +652,12 @@ You can specify a set of default groups and languages in your plist, which will 
 	<false/>
 	...
 	```
+	You can also use the following method at runtime
+
+	```
+	Applanga.setDraftModelEnabled(bool);
+   ```
+This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
 
 ## Automatic Push Notification Localization and InfoPlist strings
 
