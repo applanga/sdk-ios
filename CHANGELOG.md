@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.135 (9 Apr 2020)
+#### Added
+- only request supported languages in update
+
+---
+
 ### Version 2.0.134 (2 Apr 2020)
 #### Added
 - setDraftModeEnabled at runtime
