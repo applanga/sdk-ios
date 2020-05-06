@@ -117,7 +117,20 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
  @param applangaIDs optional array of ids that should be linked in this screenshot
- @param completionHandler completion callback when upload is finished
+ @param enableOcr Enable OCR processing on the applanga backend
+ */
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr;
+
+/** capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ @param enableOcr Enable OCR processing on the applanga backend
+ */
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr withCompletionHandler: (void (^)(BOOL success))completionHandler;
+
+/** capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
  */
 + (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs withCompletionHandler: (void (^)(BOOL success))completionHandler;
 

@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.135
+*Version:* 2.0.136
 
 *Website:* <https://www.applanga.com> 
 
@@ -489,6 +489,22 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	var applangaIDs:[String] = ["String1", "String2", "String3"]
 	Applanga.captureScreenshot(withTag: tag, andIDs: applangaIDs)
 	```
+	
+	
+	if for some reason a text is not tagged or the sdk cannot find the correct tag, you may take a screenshot programmatically using the enableOcr param like so.
+	
+	```objc
+	//objc
+	NSString* tag = @"MainMenu";
+	[Applanga captureScreenshotWithTag:tag andIDs:nil useOcr:true];
+	```
+	
+	```swift
+	//swift
+	Applanga.captureScreenshot(withTag: tag, andIDs: null, useOcr: true)
+	```
+	
+	Please note: in most cases enabling OCR is not necessary and will slow down the processing of screenshots for the dashboard, so please only use if needed. Feel free to reach out to applanga support for more info.
 	
  	The Applanga SDK tries to find all IDs on the screen but you can also pass additional IDs in the **applangaIDs** parameter. 
  	

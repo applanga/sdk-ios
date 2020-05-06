@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.136 (6 May 2020)
+#### Added
+- Allow flutter to take screenshots outside of draft mode
+- Added ocr option to programmatic screenshots
+---
+
 ### Version 2.0.135 (9 Apr 2020)
 #### Added
 - only request supported languages in update
