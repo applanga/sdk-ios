@@ -2,10 +2,9 @@
 
 //  Package.swift
 
-
 import PackageDescription
 let package = Package(
-    name: "applanga",
+    name: "Applanga",
     products: [
         .library(
             name: "Applanga",
@@ -13,14 +12,7 @@ let package = Package(
             
     ],
     targets: [
-        .binaryTarget(name: "Applanga", 
-			path: "Applanga.xcframework",
-            exclude: [
-                "Applanga.framework",
-                "Applanga.json",
-                "Applanga.podspec",
-                "CHANGELOG.md",
-                "LICENSE"
-            ])
+        .binaryTarget(name: "Applanga",
+			path: "Applanga.xcframework")
     ]
 )
