@@ -5,13 +5,6 @@
 
 import PackageDescription
 let package = Package(
-    exclude: [
-                "Applanga.framework",
-                "Applanga.json",
-                "Applanga.podspec",
-                "CHANGELOG.md",
-                "LICENSE"
-            ],
     name: "applanga",
     products: [
         .library(
@@ -21,6 +14,13 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(name: "Applanga", 
-			path: "Applanga.xcframework"),
+			path: "Applanga.xcframework",
+            exclude: [
+                "Applanga.framework",
+                "Applanga.json",
+                "Applanga.podspec",
+                "CHANGELOG.md",
+                "LICENSE"
+            ])
     ]
 )
