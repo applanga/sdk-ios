@@ -9,10 +9,19 @@ let package = Package(
     products: [
         .library(
             name: "Applanga",
-            targets: ["Applanga"]),
+            targets: ["Applanga"])
+            
     ],
     targets: [
-        .binaryTarget(name: "Applanga", path: "Applanga.xcframework"
+        .binaryTarget(name: "Applanga", 
+			path: "Applanga.xcframework",
+            exclude: [
+                "Applanga.framework",
+                "Applanga.json",
+                "Applanga.podspec",
+                "CHANGELOG.md",
+                "LICENSE"
+            ]
               ),
     ]
 )
