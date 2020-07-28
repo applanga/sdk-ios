@@ -5,9 +5,18 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.139 (28 Jul 2020)
+#### Added
+- Gzip https requests as default
+- Optional interface for providing string positions
+- Support for swift package manager
+
+---
+
 ### Version 2.0.137 (25 May 2020)
 #### Added
 - Automatic removal of language databases that dont exist on the dashboard
+
 ---
 
 ### Version 2.0.136 (6 May 2020)

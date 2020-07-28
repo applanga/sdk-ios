@@ -23,6 +23,14 @@ typedef NS_ENUM(NSInteger, ALPluralRule) {
     /** general plural form—also used if the language only has a single form */ALPluralRuleOther
 };
 
+/** Some Plugins have special ways to store and retrieve String position informations on the screen and this interface is used to provide this
+*/
+@protocol ApplangaScreenshotInterface <NSObject>
+@required
+- (void)getStringPositions:(void (^)(NSString* result))completionHandler;
+@end
+
+
 /** Applanga Interface Specification
  *
  * *NOTE:* In most cases you do not need to manually call any of the Applanga methods and you can simply use [NSLocalizedStringWithDefaultValue(@“APPLANGA_ID”, nil, NSBundle.mainBundle, @“default value”, @“”)](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue)
@@ -160,6 +168,11 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 /** Applanga set draft mode enabled 
 */
 + (void)setDraftModelEnabled:(BOOL)enabled;
+
+/**Some Plugins have special ways to store and retrieve String position informations on the screen and this interface is used to provide this
+ @param screenshotInterface ApplangaScreenshotInterface custom Protocol implementation to pass string position information when a screenshot is taken
+ */
++ (void)setScreenshotInterface:(id<ApplangaScreenshotInterface>)screenshotInterface;
 
 /** reset the instance and saved values
  */

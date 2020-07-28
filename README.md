@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.137
+*Version:* 2.0.139
 
 *Website:* <https://www.applanga.com> 
 
@@ -39,6 +39,12 @@ Automatic Push Notification Localization and InfoPlist.strings
 
 3. Run `carthage update` from the command line and link the ***Applanga.framework*** to your project as it is described in the carthage documentation: [Getting started for iOS](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
+#### Swift Package Manager [[?](https://swift.org/package-manager/)]
+
+##### NOTE: This is only supported in Xcode versions 12+
+
+1: Simply add the repo url https://github.com/applanga/sdk-ios as a swift package dependency, and select the latest release tag 
+
 #### Manual (zero-code)
 
 1. If you want to translate your iOS app download the latest release of the Applanga iOS SDK from [Github](https://github.com/applanga/sdk-ios/releases). Unzip it, then drag and drop Applanga.framework into into the `Embedded Binaries` section of your target and check the "Copy items into destination group’s folder (if needed)" option.
@@ -71,7 +77,7 @@ Paste the following line in this `Run Script Phase`'s script text field:
 ## Usage
 ### Basic:
 
-- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/debugging_tools.html) or [Draft Mode](https://applanga.com/docs#draft_on_device_testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used.
+- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/debugging_tools.html) or [Draft Mode](https://www.applanga.com/docs/translation-management-dashboard/draft_on-device-testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used.
 Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4). If you have additional *".strings"* files that should be automatically uploaded you can add them in your Info.plist with the key **ApplangaAdditionalStringFiles** & if you have parts of your code in additional *".framework"* bundles you can add them with the key **ApplangaAdditionalFrameworks** as a comma seperated lists. You don’t need to use any special code. 
 	- With ***Objective-C*** use the native method ***[NSLocalizedStringWithDefaultValue(@"APPLANGA_ID", nil, NSBundle.mainBundle, @"default value", @"")](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue?language=objc)*** 
 	
@@ -452,7 +458,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
  	
  	5.1 **Make screenshots manually**
  	
- 	To manually make a screenshot you first have to set your app into [draft mode](https://applanga.com/docs#draft_on_device_testing).
+ 	To manually make a screenshot you first have to set your app into [draft mode](https://www.applanga.com/docs/translation-management-dashboard/draft_on-device-testing).
  	 
  	With your app in draft mode, all you have to do is to make a two finger swipe downwards.
  	This will show the screenshot menu and load a list of [tags](https://applanga.com/docs#manage_tags).
