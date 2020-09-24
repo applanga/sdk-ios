@@ -5,6 +5,13 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.140 (24 Sep 2020)
+#### Added
+- Error when key is too long
+- Added accessibility ids for appium testing
+
+---
+
 ### Version 2.0.139 (28 Jul 2020)
 #### Added
 - Gzip https requests as default
