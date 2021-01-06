@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.144 (6 Jan 2021)
+### Version 2.0.145 (6 Jan 2021)
 #### Added
 - Support for watchOS and MacOS
 - Draft menu redesign
