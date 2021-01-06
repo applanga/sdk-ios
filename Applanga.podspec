@@ -1,17 +1,34 @@
 Pod::Spec.new do |s|
   s.name                = "Applanga"
-  s.version             = "2.0.140"
-  s.summary             = "This is the iOS SDK for Applanga."
+  s.version             = "2.0.144"
+  s.summary             = "This is the Applanga SDK"
   s.homepage            = "http://applanga.com"
   s.license             = { :type => 'Commercial', :file => 'LICENSE' }
   s.author              = { "Mbaas Development GmbH" => "developer@applanga.com" }
-  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "2.0.140" }
-  s.platform            = :ios, '9.0'
-  s.frameworks          = 'SystemConfiguration'
+  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "2.0.144" }
   s.library             = 'sqlite3', 'z'
-  s.preserve_paths      = 'Applanga.framework'
-  s.public_header_files = 'Applanga.framework/Headers/Applanga.h'
-  s.source_files        = 'Applanga.framework/Headers/Applanga.h'
-  s.vendored_frameworks = 'Applanga.framework'
+  s.vendored_frameworks = ""
   s.requires_arc        = true
+
+  s.ios.deployment_target = '9.0'
+  s.ios.frameworks      = 'SystemConfiguration'
+  s.ios.preserve_paths      = 'Applanga.framework'
+  s.ios.public_header_files = 'Applanga.framework/Headers/Applanga.h'
+  s.ios.source_files        = 'Applanga.framework/Headers/Applanga.h'
+  s.ios.vendored_frameworks = 'Applanga.framework'
+
+  s.watchos.deployment_target = '2.0'
+  s.watchos.preserve_paths      = 'ApplangaWatchOS.framework'
+  s.watchos.public_header_files = 'ApplangaWatchOS.framework/Headers/Applanga.h'
+  s.watchos.source_files        = 'ApplangaWatchOS.framework/Headers/Applanga.h'
+  s.watchos.vendored_frameworks = 'ApplangaWatchOS.framework'
+
+  s.osx.deployment_target = '10.7'
+  s.osx.preserve_paths      = 'ApplangaOSX.framework'
+  s.osx.public_header_files = 'ApplangaOSX.framework/Headers/Applanga.h'
+  s.osx.source_files        = 'ApplangaOSX.framework/Headers/Applanga.h'
+  s.osx.vendored_frameworks = 'ApplangaOSX.framework'
+
 end
+
+

@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.140
+*Version:* 2.0.144
 
 *Website:* <https://www.applanga.com> 
 
@@ -16,6 +16,9 @@
   4. [Optional settings](#optional-settings)
   5. [Localize Push Notifications & Info.plist](#automatic-push-notification-localization-and-infoplist-strings)
   6. [SwiftUI](#swiftui)
+  7. [WatchOS](#watchos)
+  8. [MacOS](#macos)
+
 
 Automatic Push Notification Localization and InfoPlist.strings
 
@@ -714,8 +717,28 @@ Although not all Applanga features are supported yet in SwiftUI, you can easily 
 ### SwiftUI Screenshots
 Screenshots uploaded from SwiftUI apps are proccesed server side with OCR to try and read the texts present as it is not possible yet client side. This means that in rare cases they will not be 100% accurate.
 	
-### TV OS
+## WatchOS 
+
+While screenshots and the draft mode menu are not availble, string upload and automatic storyboard translation work in WatchOS targets, just follow these extra steps to get it working.
+
+**a.** When installing with cocoa pods or SPM you must also apply the applanga sdk to the watch target that ends with the word "extension".  
+
+**b.** Make sure that any storyboard or string file you want to localise is also a member of the extension target.
+
+**c.** Add the name of the string file or storyboard that you want to localise to the info.plist of the extension target. For example if you are localising the Interface.storyboard, then add it like so: 
+`key="ApplangaAdditionalStringFiles" value="Interface".`
+
+**d.** In the info.plist of your watch extension target, add the following entry: `key="ApplangaAdditionalFrameworks" value="NAME OF YOUR PROJECT WatchKit App".`
+
+## MacOS 
+
+While screenshots and the draft mode menu are not availble, string upload and automatic storyboard translation work in MacOS targets, just install as you would the iOS sdk and use as normal.
+	
+## TV OS
 
 Automatic translations and draft mode will work on TV OS without requiring any special changes. 
 
 The only feature not avalabile currently is the draft mode screenshot menu.
+
+
+
