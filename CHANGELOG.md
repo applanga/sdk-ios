@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.146 (27 Jan 2021)
+#### Fixed
+- Support for tl language on ios
+
+---
+
 ### Version 2.0.145 (6 Jan 2021)
 #### Added
 - Support for watchOS and MacOS
