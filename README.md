@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.146
+*Version:* 2.0.147
 
 *Website:* <https://www.applanga.com> 
 
@@ -550,6 +550,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		XCUIApplication *app = [app init];
 	
 		//open screenshot menu by tapping invisible Applanga button
+		[[app.buttons[@"Applanga.ToggleDraftMenu"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
 		[[app.buttons[@"Applanga.ToggleScreenShotMenu"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
 		//toggle tag selection
 		[[app.buttons[@"Applanga.SelectTag"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
@@ -564,6 +565,15 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		[self waitForExpectationsWithTimeout:30 handler:nil];
 		...
 	}		
+	
+	  	//if you want to then hide the draft menu again, then do the following
+        //Close the screenshot menu
+		[[app.buttons[@"Applanga.CancelScreenshot"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
+       	//Close the draft menu
+		[[app.buttons[@"Applanga.ToggleDraftMenu"] coordinateWithNormalizedOffset:CGVectorMake(0.5, 0.5)] tap];
+
+
+	
 	```
 
 	```swift
@@ -572,17 +582,26 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		let app = XCUIApplication();
         
 		//open screenshot menu by tapping invisible Applanga button
-		app.buttons["Applanga.ToggleScreenShotMenu"].tap();
-		app.buttons["Applanga.SelectTag"].tap();
-		app.tables.staticTexts["Main"].tap();
-		app.buttons["Applanga.CaptureScreen"].tap();
+		app.buttons["Applanga.ToggleDraftMenu"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["Applanga.OpenScreenshotView"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.buttons["Applanga.SelectTag"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        app.tables.staticTexts["MainMenu"].tap();
+        app.buttons["Applanga.ConfirmScreenshot"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
 
 		//screenshot upload takes a while so we need to wait until the screenshot menu is visible again until we can proceed
 		let predicate = NSPredicate(format: "exists == 1")
-		let query = XCUIApplication().buttons["Applanga.SelectTag"];
-		expectation(for: predicate, evaluatedWith: query, handler: nil)
-		waitForExpectations(timeout: 3, handler: nil)
+        let query = XCUIApplication().buttons["Applanga.SelectTag"];
+        expectation(for: predicate, evaluatedWith: query, handler: nil)
+        waitForExpectations(timeout: 30, handler: nil)
     }
+    
+    	//if you want to then hide the draft menu again, then do the following
+        //Close the screenshot menu
+       	app.buttons["Applanga.CancelScreenshot"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+       	//Close the draft menu
+		app.buttons["Applanga.ToggleDraftMenu"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+
+    
     ```
 		
 ## Optional settings

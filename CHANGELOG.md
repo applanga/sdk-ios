@@ -5,6 +5,13 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.147 (7 Apr 2021)
+#### Fixed
+- Fix for automated screenshots with new draft mode layout
+- Fix for retrieving new language after setLanguage call
+
+---
+
 ### Version 2.0.146 (27 Jan 2021)
 #### Fixed
 - Support for tl language on ios
