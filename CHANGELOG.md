@@ -5,6 +5,14 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.148 (2 Sep 2021)
+
+#### ADDED
+- Applanga Show Id Mode
+
+#### Fixed
+- renamed setDraftModelEnabled to setDraftModeEnabled
+
 ### Version 2.0.147 (7 Apr 2021)
 #### Fixed
 - Fix for automated screenshots with new draft mode layout

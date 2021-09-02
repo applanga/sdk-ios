@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Applanga.h</key>
 		<data>
-		0TILL9w8vmSi6Bm+Mr6Ak4zX9MM=
+		y6BFFknu9GN+gZ3ZfrGDb9NPVsA=
 		</data>
 		<key>Headers/ApplangaWatchOS.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		vXrnW3Qx6KY7OLFFWUgJiX2ZXB0=
+		UlhW9Z1bfbJPqFR6hv3myzSdAhA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -27,11 +27,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0TILL9w8vmSi6Bm+Mr6Ak4zX9MM=
+			y6BFFknu9GN+gZ3ZfrGDb9NPVsA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZLF2P5KK5W6nGpqJBDQ11a+TSdpTVEfZWqNXfBU3wC4=
+			mKKqYLXE55LzGfKCeEvEViQwRkYZB4fGzxbU2zzwHSo=
 			</data>
 		</dict>
 		<key>Headers/ApplangaWatchOS.h</key>

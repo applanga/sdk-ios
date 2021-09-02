@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.147
+*Version:* 2.0.148
 
 *Website:* <https://www.applanga.com> 
 
@@ -63,7 +63,7 @@ Paste the following line in this `Run Script Phase`'s script text field:
 	```
  
 ## Configuration
-1. To start iOS Localization with Applanga download the *Applanga Settings File* for your app from the App Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
+1. To start iOS Localization with Applanga download the *Applanga Settings File* for your app from the Project Overview in the dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
  
 2. Add the *Applanga Settings File* to your apps resources. It will be automatically loaded.
  
@@ -452,6 +452,16 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 		//called if update is complete
 	});		
 	```
+ 
+    2.0.148 **Enable Show ID Mode**
+
+    ```javascript
+    Applanga.setShowIdModeEnabled(true);
+    ```
+
+    If Show ID Mode is enabled, applanga will return your string ids instead of you localisations. This can become important for screenshots (especially SwiftUI as stated in automated screenshots with SwiftUI below). For instance if you have an argument string or any string which changes at runtime it is possible that this specific string won't be collected on a Screenshot. If Show ID Mode is activated, applanga can make an exact match of the string id so the screenshot string collection will be accurate. 
+
+    Don't use this flag in Production. To be able to the see changes you have to reload your UI after changing this flag.
 
 5. **Automatic Screenshot Upload**
  	
@@ -517,6 +527,8 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	
  	The Applanga SDK tries to find all IDs on the screen but you can also pass additional IDs in the **applangaIDs** parameter. 
  	
+    *Note: It's not possible to make the screenshot like this in UI-Tests. The reason is, that in UI-Tests you don't have access to the real Applanga instance. See the alternative in the next Section: `Automated during UI Tests`.*
+
  	5.4 **Automated during UITests**
  	
  	To capture screenshots from UITests running in xcode you first have to add a specific launch argument in your test classes setup function:
@@ -656,6 +668,12 @@ You can specify a set of default groups and languages in your plist, which will 
 	bash "$SOURCE_ROOT/Carthage/Checkouts/sdk-ios/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	
+	or if you are using Swift Package Manager:
+	
+	```
+	bash "${BUILD_DIR}/../../SourcePackages/checkouts/sdk-ios/Applanga.xcframework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
+	```
+	
 	or if you are integrated the Applanga SDK manually:
 	
 	```
@@ -734,7 +752,53 @@ Although not all Applanga features are supported yet in SwiftUI, you can easily 
 
 ```
 ### SwiftUI Screenshots
-Screenshots uploaded from SwiftUI apps are proccesed server side with OCR to try and read the texts present as it is not possible yet client side. This means that in rare cases they will not be 100% accurate.
+The best method for SwiftUI is doing your screenshots with UITests. At first you need to enable Applanga for UI Tests with the launch argument `ApplangaUITestScreenshotEnabled` as described in the section *Automated During UI Tests*. For Swift UI you need to set the `ApplangaShowIdModeEnabled` flag. This flag triggers the applanga ID mode, which means that every string will shown by its ID and not by its localisation. This is the only method to be 100% accurate on linking the correct ids to the screenshot.
+You also have to iterate through the SwiftUI View Hierarchy to pass all string keys and positions to applanga. This is done via the `copyApplangaIdsAndPositionsToClipboard` extension method. Call it right before doing a screenshot. How to do a screenshot see the section *Automated During UI Tests*.
+
+```swift
+    override func setUp() {
+        super.setUp()
+        app.launchArguments.append("ApplangaUITestScreenshotEnabled");
+        app.launchArguments.append("ApplangaShowIdModeEnabled");
+        app.launch()
+    }
+```
+
+```swift
+extension XCUIApplication {
+    func copyApplangaIdsAndPositionsToClipboard(){
+        var idsAndPosDict: [String: String] = [:]
+        let desc = self.debugDescription;
+        func matchAndAdd(pattern: String){
+            let regex = try! NSRegularExpression(pattern: pattern);
+            let matches = regex.matches(in: desc,
+                                        range: NSRange(desc.startIndex..., in: desc));
+            for(match) in matches{
+                guard let posRange = Range(match.range(at: 2), in: desc) else {
+                    continue
+                }
+                guard let labelRange = Range(match.range(at: 3), in: desc) else {
+                    continue
+                }
+                let pos = String(desc[posRange]);
+                let label = String(desc[labelRange]);
+                idsAndPosDict[label] = pos;
+            }
+        }
+        matchAndAdd(pattern: "StaticText,(\\s|[0-9]|x|[a-f])+,\\s(\\{\\{.*\\}\\}),\\slabel:\\s\\'(.*)\\'")
+        matchAndAdd(pattern: "Button,(\\s|[0-9]|x|[a-f])+,\\s(\\{\\{.*\\}\\}).*label:\\s\\'([^']*)")
+        var idsAndPosString = "";
+        if let json = try? JSONEncoder().encode(idsAndPosDict) {
+            idsAndPosString = String(data: json, encoding: .utf8)!
+        }
+        let pasteBoard = UIPasteboard.general
+        idsAndPosString = "applanga:" + idsAndPosString
+        pasteBoard.string = idsAndPosString;
+    }
+}
+```
+
+
 	
 ## WatchOS 
 

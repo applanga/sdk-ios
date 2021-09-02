@@ -165,9 +165,18 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (BOOL)enabled;
 
-/** Applanga set draft mode enabled 
+/** please use setDraftModeEnabled instead
 */
-+ (void)setDraftModelEnabled:(BOOL)enabled;
++ (void)setDraftModelEnabled:(BOOL)enabled DEPRECATED_MSG_ATTRIBUTE("please use setDraftModeEnabled instead");
+
+/** Applanga set draft mode enabled
+*/
++ (void)setDraftModeEnabled:(BOOL)enabled;
+
+/**
+ Enable show id mode activation
+ */
++ (void)setShowIdModeEnabled:(BOOL)enabled;
 
 /**Some Plugins have special ways to store and retrieve String position informations on the screen and this interface is used to provide this
  @param screenshotInterface ApplangaScreenshotInterface custom Protocol implementation to pass string position information when a screenshot is taken
