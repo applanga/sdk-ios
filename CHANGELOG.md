@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.148 (2 Sep 2021)
+### Version 2.0.149 (2 Sep 2021)
 
 #### ADDED
 - Applanga Show Id Mode
