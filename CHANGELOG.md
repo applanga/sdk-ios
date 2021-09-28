@@ -5,6 +5,13 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.150 (28 Sep 2021)
+
+#### Fixed
+- warning about missing settings file after iOS 15 update
+
+---
+
 ### Version 2.0.149 (2 Sep 2021)
 
 #### ADDED
@@ -12,6 +19,8 @@
 
 #### Fixed
 - renamed setDraftModelEnabled to setDraftModeEnabled
+
+---
 
 ### Version 2.0.147 (7 Apr 2021)
 #### Fixed
