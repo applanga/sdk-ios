@@ -5,6 +5,14 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+
+### Version 2.0.151 (6 Oct 2021)
+
+#### Fixed
+- recovery if cache gets corrupted or deleted in the background
+
+---
+
 ### Version 2.0.150 (28 Sep 2021)
 
 #### Fixed

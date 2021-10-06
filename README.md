@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.150
+*Version:* 2.0.151
 
 *Website:* <https://www.applanga.com> 
 
@@ -453,7 +453,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	});		
 	```
  
-    2.0.150 **Enable Show ID Mode**
+    2.0.151 **Enable Show ID Mode**
 
     ```javascript
     Applanga.setShowIdModeEnabled(true);
