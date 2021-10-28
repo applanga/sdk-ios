@@ -156,6 +156,12 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (BOOL)setLanguage:(NSString*)language;
 
+/** change phone language to new language and fetch latest localization updates from Applanga
+ @param language the language iso code
+ @param completionHandler handler that gets triggered when the localization update finishes
+ */
++ (void)setLanguageAndUpdate:(NSString*)language withCompletionHandler:(void (^)(BOOL success))completionHandler;
+
 /** enable or disable Applanga
  @param enabled true if applanga should be active (default)
  */

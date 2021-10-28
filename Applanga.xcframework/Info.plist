@@ -22,6 +22,19 @@
 		</dict>
 		<dict>
 			<key>LibraryIdentifier</key>
+			<string>ios-arm64_armv7</string>
+			<key>LibraryPath</key>
+			<string>Applanga.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>arm64</string>
+				<string>armv7</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>ios</string>
+		</dict>
+		<dict>
+			<key>LibraryIdentifier</key>
 			<string>watchos-arm64_i386_x86_64-simulator</string>
 			<key>LibraryPath</key>
 			<string>ApplangaWatchOS.framework</string>
@@ -48,19 +61,6 @@
 			</array>
 			<key>SupportedPlatform</key>
 			<string>watchos</string>
-		</dict>
-		<dict>
-			<key>LibraryIdentifier</key>
-			<string>ios-arm64_armv7</string>
-			<key>LibraryPath</key>
-			<string>Applanga.framework</string>
-			<key>SupportedArchitectures</key>
-			<array>
-				<string>arm64</string>
-				<string>armv7</string>
-			</array>
-			<key>SupportedPlatform</key>
-			<string>ios</string>
 		</dict>
 		<dict>
 			<key>LibraryIdentifier</key>

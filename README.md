@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.151
+*Version:* 2.0.152
 
 *Website:* <https://www.applanga.com> 
 
@@ -453,7 +453,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	});		
 	```
  
-    2.0.151 **Enable Show ID Mode**
+    2.0.152 **Enable Show ID Mode**
 
     ```javascript
     Applanga.setShowIdModeEnabled(true);
@@ -720,6 +720,26 @@ You can specify a set of default groups and languages in your plist, which will 
 	Applanga.setDraftModelEnabled(bool);
    ```
 This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
+
+7. **Convert Placeholder**
+
+    To convert placeholders between iOS and Android style you need to enable the following in your plist: 
+	
+	```xml
+	...
+   <key>ApplangaConvertPlaceholders</key>
+	<true/>
+	...
+   ```
+	
+    The ***Convert Placeholder*** feature has support for the following:
+	  - All instances of `%s` will be converted to `%@`
+	  - Unsupported conversion types such as `%h` and `%tY` will convert to default `%@` type.
+	  - Positional Arguments `%1$s` convert to `%1$@`
+	  - Support iOS Argument Index `%4$s`
+	  - Support iOS Relative Index `%<s`
+	  - Support iOS Ordinary indexing `%s`
+
 
 ## Automatic Push Notification Localization and InfoPlist strings
 

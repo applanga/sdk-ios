@@ -5,7 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.152 (28 Oct 2021)
 
+#### Fixed
+- warning on no space for settings file extraction
+
+---
 ### Version 2.0.151 (6 Oct 2021)
 
 #### Fixed
@@ -24,6 +29,7 @@
 
 #### ADDED
 - Applanga Show Id Mode
+- Applanga Convert Placeholder
 
 #### Fixed
 - renamed setDraftModelEnabled to setDraftModeEnabled
