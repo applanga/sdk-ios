@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, ALPluralRule) {
 */
 @protocol ApplangaScreenshotInterface <NSObject>
 @required
-- (void)getStringPositions:(void (^)(NSString* result))completionHandler;
+- (void)onCaptureScreenshotFromOverlay:(NSString*)screenTag;
 @end
 
 
@@ -63,7 +63,6 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (void)updateGroups:(NSArray*)groups andLanguages:(NSArray*)languages withCompletionHandler:(void (^)(BOOL success))completionHandler;
 
-
 /** get localized string for current language and given key
  @param key the string key from Applanga
  @param value the defaultvalue that should be used if the key does not exist or is empty (the default value will also be uploaded to Applanga)
@@ -80,7 +79,15 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  @param value the defaultvalue that should be used if the key does not exist or is empty (the default value will also be uploaded to Applanga)
  @param arguments dictionary with named arguments that will be replaced int the string
  */
-+ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments;
++ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value arguments:(NSDictionary*)arguments;
+
+/** *!!!DEPRECATED!!!* please see: localizedStringForKey:withDefaultValue:arguments:
+ get localized string for given key, defaultValue and arguments
+ @param key the string key from Applanga
+ @param value the defaultvalue that should be used if the key does not exist or is empty (the default value will also be uploaded to Applanga)
+ @param arguments dictionary with named arguments that will be replaced int the string
+ */
++ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments __attribute__((deprecated));
 
 /** *!!!DEPRECATED!!!* please see: localizedStringForKey:withDefaultValue:andArguments:
  @param key the string key from Applanga
@@ -94,7 +101,16 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  @param arguments dictionary with named arguments that will be replaced int the string
  @param pluralRule the pluralisation / ALPluralRule that should be used
  */
-+ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule;
++ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value arguments:(NSDictionary*)arguments pluralRule:(ALPluralRule)pluralRule;
+
+/** *!!!DEPRECATED!!!* please see: localizedStringForKey:withDefaultValue:arguments:pluralRule
+ get localized string for given key, arguments and pluralisation
+ @param key the string key from Applanga
+ @param value the defaultvalue that should be used if the key does not exist or is empty (the default value will also be uploaded to Applanga)
+ @param arguments dictionary with named arguments that will be replaced int the string
+ @param pluralRule the pluralisation / ALPluralRule that should be used
+ */
++ (NSString*)localizedStringForKey:(NSString*)key withDefaultValue:(NSString*)value andArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule __attribute__((deprecated));
 
 /** *!!!DEPRECATED!!!* please see: localizedStringForKey:withDefaultValue:andArguments:andPluralRule:
  @param key the string key from Applanga
@@ -116,32 +132,71 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 
 + (NSDictionary*) localizeMap:(NSDictionary*)map;
 
++ (NSDictionary*) localizeMap:(NSDictionary*)map andUpdateMissingStrings:(BOOL)updateMissingStrings;
+
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
  @param applangaIDs optional array of ids that should be linked in this screenshot
  */
-+ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs;
++ (void)captureScreenshotWithTag:(NSString*)tag ids:(NSArray*)applangaIDs;
 
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
  @param applangaIDs optional array of ids that should be linked in this screenshot
  @param enableOcr Enable OCR processing on the applanga backend
  */
-+ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr;
++ (void)captureScreenshotWithTag:(NSString*)tag ids:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr;
 
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
  @param applangaIDs optional array of ids that should be linked in this screenshot
  @param enableOcr Enable OCR processing on the applanga backend
  */
-+ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr withCompletionHandler: (void (^)(BOOL success))completionHandler;
++ (void)captureScreenshotWithTag:(NSString*)tag ids:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr withCompletionHandler: (void (^)(BOOL success))completionHandler;
 
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
  @param applangaIDs optional array of ids that should be linked in this screenshot
  */
-+ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs withCompletionHandler: (void (^)(BOOL success))completionHandler;
++ (void)captureScreenshotWithTag:(NSString*)tag ids:(NSArray*)applangaIDs withCompletionHandler: (void (^)(BOOL success))completionHandler;
 
+/** capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ @param positions information of strings and their positions
+ */
++ (void)captureScreenshotWithTag:(NSString*)tag ids:(NSArray*)applangaIDs positions:(NSString*)positions withCompletionHandler: (void (^)(BOOL success))completionHandler;
+
+/** *!!!DEPRECATED!!!* please use: captureScreenshotWithTag:tag:ids
+ capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ */
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs __attribute__((deprecated));
+
+/** *!!!DEPRECATED!!!* please use: captureScreenshotWithTag:tag:ids:useOcr
+ capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ @param enableOcr Enable OCR processing on the applanga backend
+ */
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr __attribute__((deprecated));
+
+/** *!!!DEPRECATED!!!* please use: captureScreenshotWithTag:tag:ids:useOcr:withCompletionHandler
+ capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ @param enableOcr Enable OCR processing on the applanga backend
+ */
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs useOcr:(BOOL)enableOcr withCompletionHandler: (void (^)(BOOL success))completionHandler __attribute__((deprecated));
+
+/** *!!!DEPRECATED!!!* please use: captureScreenshotWithTag:tag:ids:withCompletionHandler
+ capture a screenshot, upload it and link it to the given tag and ids
+ @param tag the tag this screenshot should be assigned to
+ @param applangaIDs optional array of ids that should be linked in this screenshot
+ */
++ (void)captureScreenshotWithTag:(NSString*)tag andIDs:(NSArray*)applangaIDs withCompletionHandler: (void (^)(BOOL success))completionHandler __attribute__((deprecated));
+    
 /** show the tag selection menu to capture a screenshot for a tag
  @param visible boolean that indicates if menu should be visible(TRUE) or invisible (FALSE)
  */

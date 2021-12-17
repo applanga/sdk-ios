@@ -5,7 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.152 (28 Oct 2021)
+### Version 2.0.153 (17 Dec 2021)
+
+#### ADDED
+- renamed params for captureScreenshotWithTag and localizedStringForKey to match the apple naming guidelines and deprecated old ones
+- Applanga setLanguageAndUpdate()
 
 #### Fixed
 - warning on no space for settings file extraction
