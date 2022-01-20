@@ -5,8 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.153 (17 Dec 2021)
+### Version 2.0.154 (20 Jan 2022)
+#### ADDED
+- support for placeholder conversion with relative android placeholder such as `%1$tm` `%<te`
 
+### Version 2.0.153 (17 Dec 2021)
 #### ADDED
 - renamed params for captureScreenshotWithTag and localizedStringForKey to match the apple naming guidelines and deprecated old ones
 - Applanga setLanguageAndUpdate()

@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.153
+*Version:* 2.0.154
 
 *Website:* <https://www.applanga.com> 
 
@@ -453,7 +453,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	});		
 	```
  
-    2.0.153 **Enable Show ID Mode**
+    2.0.154 **Enable Show ID Mode**
 
     ```javascript
     Applanga.setShowIdModeEnabled(true);
@@ -731,14 +731,29 @@ This will overide the setting in the plist, but it will not override draft mode 
 	<true/>
 	...
    ```
-	
-    The ***Convert Placeholder*** feature has support for the following:
-	  - All instances of `%s` will be converted to `%@`
-	  - Unsupported conversion types such as `%h` and `%tY` will convert to default `%@` type.
-	  - Positional Arguments `%1$s` convert to `%1$@`
-	  - Support iOS Argument Index `%4$s`
-	  - Support iOS Relative Index `%<s`
-	  - Support iOS Ordinary indexing `%s`
+
+    ***Common placeholder***
+
+    These placeholder will not be converted as they are supported on iOS and Android.
+
+    - Scientific notation `%e` and `%E`
+    - `%c` and `%C` Unicode Characters
+    - `%f` floating point number
+    - `%g` and `%G` computerized scientific notation
+    - `%a` and `%A` Floating point numbers
+    - Octal integer `%o` (for `%O` see Android to iOS conversion)
+    - `%x` and `%X` hexadecimal presentation using lowercase letters (`%x`) or uppercase letters (`%X`)
+    - `%d` will remain `%d`
+    - Positional placeholder as `%1$s` are converted to `%1$@` and vice-versa
+
+    ***Android placeholder***
+    - All instances of `%s` and `%S` will be converted to `%@`
+    - Unsupported conversion types such as `%h` and `%tY` will convert to default `%@` type.
+    - Boolean types `%b` and `%B` will be converted to `%@`
+    - `%h` and `%H` are converted to `%@`
+    - Positional strings using '<' are supported. "Duke's Birthday: `%1$tm` `%<te`,`%<tY`" results in "Duke's Birthday: `%1$@` `%1$@`,`%1$@`"
+
+
 
 
 ## Automatic Push Notification Localization and InfoPlist strings
