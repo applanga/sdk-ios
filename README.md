@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.154
+*Version:* 2.0.155
 
 *Website:* <https://www.applanga.com> 
 
@@ -453,7 +453,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 	});		
 	```
  
-    2.0.154 **Enable Show ID Mode**
+    2.0.155 **Enable Show ID Mode**
 
     ```javascript
     Applanga.setShowIdModeEnabled(true);
@@ -719,7 +719,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	```
 	Applanga.setDraftModelEnabled(bool);
    ```
-This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
+    This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
 
 7. **Convert Placeholder**
 
@@ -752,6 +752,21 @@ This will overide the setting in the plist, but it will not override draft mode 
     - Boolean types `%b` and `%B` will be converted to `%@`
     - `%h` and `%H` are converted to `%@`
     - Positional strings using '<' are supported. "Duke's Birthday: `%1$tm` `%<te`,`%<tY`" results in "Duke's Birthday: `%1$@` `%1$@`,`%1$@`"
+
+8. **Language Mapping**
+
+    You can map a locale to another locale. For example if you don't have `es-CL` added to your dashboard it usually has a fallback to `es`. But if you want to treat `es-CL` as `es-MX` then you could add it to the map. Watch out for the log:
+    
+    `ApplangaLanguageMap: es-CL is mapped to es-MX`
+
+    Example:
+
+    ```xml
+    ...
+	<key>ApplangaLanguageMap</key>
+	<string>zh-Hant-HK=zh-HK,es-CL=es-MX</string>
+    ...
+    ```
 
 
 

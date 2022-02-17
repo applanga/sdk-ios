@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.155 (17 Feb 2022)
+#### ADDED
+- language mapping option 
+- zh-Hant-HK support
+
 ### Version 2.0.154 (20 Jan 2022)
 #### ADDED
 - support for placeholder conversion with relative android placeholder such as `%1$tm` `%<te`
