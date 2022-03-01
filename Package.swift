@@ -8,11 +8,17 @@ let package = Package(
     products: [
         .library(
             name: "Applanga",
-            targets: ["Applanga"])
+            targets: ["Applanga"]),
+        .library(
+            name: "ApplangaUITest",
+            targets: ["ApplangaUITest"]),
             
     ],
     targets: [
         .binaryTarget(name: "Applanga",
-			path: "Applanga.xcframework")
+			path: "Applanga.xcframework"),
+        .target(
+            name: "ApplangaUITest",
+            dependencies: []),
     ]
 )
