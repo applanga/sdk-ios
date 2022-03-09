@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.158 (9 Mar 2022)
+#### Added
+- localizeMap support for empty (null) translations
+
+---
 ### Version 2.0.157 (1 Mar 2022)
 #### ADDED
 - ApplangaUITest package to improve testing + automatic screenshot captures
