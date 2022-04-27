@@ -5,29 +5,34 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.159 (27 Apr 2022)
+#### Fixed
+- automatic settings file update with macOS Monterey 12.3
+
+---
 ### Version 2.0.158 (9 Mar 2022)
 #### Added
 - localizeMap support for empty (null) translations
 
 ---
 ### Version 2.0.157 (1 Mar 2022)
-#### ADDED
+#### Added
 - ApplangaUITest package to improve testing + automatic screenshot captures
 
 ---
 ### Version 2.0.155 (17 Feb 2022)
-#### ADDED
+#### Added
 - language mapping option 
 - zh-Hant-HK support
 
 ---
 ### Version 2.0.154 (20 Jan 2022)
-#### ADDED
+#### Added
 - support for placeholder conversion with relative android placeholder such as `%1$tm` `%<te`
 
 ---
 ### Version 2.0.153 (17 Dec 2021)
-#### ADDED
+#### Added
 - renamed params for captureScreenshotWithTag and localizedStringForKey to match the apple naming guidelines and deprecated old ones
 - Applanga setLanguageAndUpdate()
 
@@ -51,7 +56,7 @@
 
 ### Version 2.0.149 (2 Sep 2021)
 
-#### ADDED
+#### Added
 - Applanga Show Id Mode
 - Applanga Convert Placeholder
 
