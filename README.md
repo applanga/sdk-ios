@@ -719,7 +719,18 @@ You can specify a set of default groups and languages in your plist, which will 
 	<string>zh-Hant-HK=zh-HK,es-CL=es-MX</string>
     ...
     ```
+9. **Wait on App Start**
 
+    In order to to deliver the latest strings to your Applanga dashboard over the air, the sdk will have a 10 second delay when starting. If youd like to stop this from happening you can add the key `ApplangaWaitOnAppStart` as in the following example to your info.plist. The Applanga SDK will not delay the appstart but that comes with the downside that initial screens my not have the latest over the air strings. So if you enable this you should make sure that your settingsfile is up to date before a release and be aware that some outdated strings may be displayed.  
+
+	 Example:
+
+    ```xml
+    ...
+	<key>ApplangaWaitOnAppStart</key>
+	<false/>
+    ...
+    ```
 
 
 
