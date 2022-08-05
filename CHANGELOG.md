@@ -5,6 +5,14 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.160 (5 Aug 2022)
+#### Fixed
+- reduced initial delay lock
+
+#### Added
+- minor documentation improvements
+
+---
 ### Version 2.0.159 (27 Apr 2022)
 #### Fixed
 - automatic settings file update with macOS Monterey 12.3
