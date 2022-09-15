@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.161 (15 Sep 2022)
+#### Fixed
+- build issues for carthage and cocoapods related to m1 macbooks
+- ui test issues on objective-c
+
+---
 ### Version 2.0.160 (5 Aug 2022)
 #### Fixed
 - reduced initial delay lock

@@ -2,7 +2,7 @@ import XCTest
 import Foundation
 import UIKit
 //wait(for: [applangaUITest.takeScreenshot(tag: "Home")], timeout: 10.0)
-public class ApplangaUITest {
+@objc public class ApplangaUITest : NSObject {
     private final var enableUITestsLaunchArg = "ApplangaUITestScreenshotEnabled";
     private final var enableShowIdModeLaunchArg = "ApplangaShowIdModeEnabled";
     
@@ -10,22 +10,29 @@ public class ApplangaUITest {
     fileprivate let prefix: String = "com.applanga:"
     fileprivate let tagScreenshotStart = "screenshot_start"
     fileprivate let tagScreenshotDone = "screenshot_done_"
-    var app: XCUIApplication
+    var app: XCUIApplication? = nil;
     var expectationDict: [String: XCTestExpectation] = [:]
     private var rawPointerToSelf: UnsafeRawPointer {
         return UnsafeRawPointer(Unmanaged.passUnretained(self).toOpaque())
     }
     
-    public init(app: XCUIApplication, enableShowIdMode: Bool = false) {
-        self.app = app
+    @objc public override init() {
         darwinNotificationCenter = CFNotificationCenterGetDarwinNotifyCenter()
+       
+        super.init()
+    }
+    
+    @objc public convenience init(app: XCUIApplication, enableShowIdMode: Bool = false) {
+        self.init()
+        self.app = app
         app.launchArguments.append(enableUITestsLaunchArg)
         if(enableShowIdMode){
             app.launchArguments.append(enableShowIdModeLaunchArg)
         }
+       
     }
     
-    public func takeScreenshot(tag: String) -> XCTestExpectation{
+    @objc public func takeScreenshot(tag: String) -> XCTestExpectation{
        let uuid = UUID().uuidString
         let screenshotInfo = getScreenshotInfo(tag: tag, uuid: uuid)
         

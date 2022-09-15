@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.160
+*Version:* 2.0.161
 
 *Website:* <https://www.applanga.com> 
 
@@ -27,7 +27,7 @@ Automatic Push Notification Localization and InfoPlist.strings
 
 1. Refer to CocoaPod’s [Getting Started Guide](http://cocoapods.org/#getstarted) for detailed instructions about CocoaPods.
 
-2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`, to be able to do screenshots during ui tests insert `pod 'ApplangaUITest'` for your ui test target.
+2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`, to be able to do screenshots during UI Tests insert `pod 'ApplangaUITest'` for your UI Test Target.
 
 3. Once you have done so, re-run **pod install** from the command line.
 
@@ -80,7 +80,7 @@ Paste the following line in this `Run Script Phase`'s script text field:
 ## Usage
 ### Basic:
 
-- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/debugging_tools.html) or [Draft Mode](https://www.applanga.com/docs/translation-management-dashboard/draft_on-device-testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used.
+- Once Applanga is integrated and configured it synchronizes your local strings with the Applanga dashboard every time you start your app in [Debug Mode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/debugging_tools.html) or [Draft Mode](https://www.applanga.com/docs/applanga-mobile-sdks/draft_on-device-testing) if new missing strings are found. Translations that you have stored in your *"Localizable.strings"* file or in *".strings""* that belong to storyboard or xib files of your app will be sent to the dashboard immediately. Applanga also auto detects your strings in storyboards and in the code once they are used.
 Storyboards should be enabled for [Base Localization](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/InternationalizingYourUserInterface/InternationalizingYourUserInterface.html#//apple_ref/doc/uid/10000171i-CH3-SW4). If you have additional *".strings"* files that should be automatically uploaded you can add them in your Info.plist with the key **ApplangaAdditionalStringFiles** & if you have parts of your code in additional *".framework"* bundles you can add them with the key **ApplangaAdditionalFrameworks** as a comma seperated lists. You don’t need to use any special code. 
 	- With ***Objective-C*** use the native method ***[NSLocalizedStringWithDefaultValue(@"APPLANGA_ID", nil, NSBundle.mainBundle, @"default value", @"")](https://developer.apple.com/reference/foundation/nslocalizedstringwithdefaultvalue?language=objc)*** 
 	
@@ -463,13 +463,13 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
 
     Don't use this flag in Production. To be able to the see changes you have to reload your UI after changing this flag.
 
-5. **Automatic Screenshot Upload**
+5. **Screenshot Capturing**
  	
- 	To give translators some context for translating strings, the Applanga SDK offers the 	functionality to upload screenshots of your app, while collecting meta data such as the 	currrent language, resolution and the Applanga translated strings that are visible, 	including their positions.
+ 	To provide context for translation, the Applanga SDK offers 	functionality to upload screenshots of your app combined with meta data such as the current language, resolution and the strings that are visible, 	including their positions.
  	Each screenshot will be assigned to a tag. A tag may have multiple screenshots with 	differing core meta data: language, app version, device, platform, OS and resolution. 
- 	You can read more here : [Manage Tags](https://applanga.com/docs#manage_tags) and here: 	[Uploading screenshots](https://applanga.com/docs#uploading_screenshots).
+ 	You can read more here : [Work with Screenshots](https://www.applanga.com/docs/applanga-screenshots/screenshots-on-applanga) and here: [Upload Screenshot](https://www.applanga.com/docs/applanga-screenshots/uploading-screenshots).
  	
- 	5.1 **Make screenshots manually**
+ 	5.1 **Manual Screenshot Capture & Upload**
  	
  	To manually make a screenshot you first have to set your app into [draft mode](https://www.applanga.com/docs/translation-management-dashboard/draft_on-device-testing).
  	 
@@ -478,79 +478,68 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
  	
  	You can now choose a tag and press *capture screenshot* to capture and upload a screenshot including all meta data for the currently visible screen and assign it to the selected tag.
  	Tags have to be created in the dashboard before they are available in the screenshot menu.
+
+ 	5.2 **Automatic Screenshot Capture & Upload via UITests**
  	
- 	5.2 **Display screenshot menu programmatically**
- 	
- 	You also have the option to open the screenshot menu programmatically, this also requires the app to be in draft mode:
+ 	The screenshotting can be automated by either extending your existing UI Tests and capture a screenshot on every View or by creating a dedicated script that traverses your App an calls the Applanga screenshot capture method on each view.
+
+    Please refer to [Installation](#Installation) how to add the `ApplangaUITest` package to your project.
+
+ 	To capture screenshots from UITests running in Xcode you first have to initialize Applanga with the current app instance so it can set specific launch arguments before starting the tests:
 
 	```objc
 	//objc
-	[Applanga setScreenShotMenuVisible:YES]
+	XCUIApplication* app = [[XCUIApplication alloc] init];
+	ApplangaUITest* applangaUITest = [[ApplangaUITest alloc] initWithApp:app enableShowIdMode:false];
 	```
 	```swift
-	//swift
-	Applanga.setScreenShotMenuVisible(true)
+	//swift 
+	let app = XCUIApplication()
+	let applangaUITest = ApplangaUITest(app: app)
 	```
+	
+   To take a screenshot specify a tag/screen name and wait for the method to finish:
+    
+   ```objc
+   //objc
+   NSArray* expectations = [NSArray arrayWithObject:[self.applangaUITest takeScreenshotWithTag:@"ScreenName"]];
+   [self waitForExpectations:expectations timeout:10];
+   ```
 
- 	5.3 **Make screenshots programmatically**
- 	
- 	To create a screenshot programmatically you call the following function:
- 	
-	```objc
-	//objc
-	NSString* tag = @"MainMenu";
-	NSArray* applangaIDs = [NSArrayarrayWithObjects:@"String1",@"String2",@"String3",nil];
-	[Applanga captureScreenshotWithTag:tag andIDs:applangaIDs];
-	```
-	```swift
-	//swift
-	var tag:String = "MainMenu"
-	var applangaIDs:[String] = ["String1", "String2", "String3"]
-	Applanga.captureScreenshot(withTag: tag, andIDs: applangaIDs)
+   ```swift
+	//swift 
+	wait(for: [applangaUITest!.takeScreenshot(tag: "ScreenName")], timeout: 10.0)
 	```
 	
-	
-	if for some reason a text is not tagged or the sdk cannot find the correct tag, you may take a screenshot programmatically using the enableOcr param like so.
+	Full example:
 	
 	```objc
-	//objc
-	NSString* tag = @"MainMenu";
-	[Applanga captureScreenshotWithTag:tag andIDs:nil useOcr:true];
+	#import <ApplangaUITest-Swift.h>
+	
+	@interface MyUITestCase : XCTestCase
+	@property ApplangaUITest *applangaUITest;
+	@end
+	
+	@implementation MyUITestCase
+	- (void)setUp {
+		...
+		XCUIApplication* app = [[XCUIApplication alloc] init];
+		self.applangaUITest = [[ApplangaUITest alloc] initWithApp:app enableShowIdMode:false];
+		[app launch];
+	}
+	
+	- (void)testScreenshot {
+		XCUIApplication *app = [[XCUIApplication alloc] init];
+		
+		NSArray* expectations = [NSArray arrayWithObject:[self.applangaUITest takeScreenshotWithTag:@"ScreenName1"]];
+		[self waitForExpectations:expectations timeout:10];
+		//navigate to next view
+		...
+		NSArray* expectations = [NSArray arrayWithObject:[self.applangaUITest takeScreenshotWithTag:@"ScreenName2"]];
+		[self waitForExpectations:expectations timeout:10];
+	}
+	@end
 	```
-	
-	```swift
-	//swift
-	Applanga.captureScreenshot(withTag: tag, andIDs: null, useOcr: true)
-	```
-	
-	Please note: in most cases enabling OCR is not necessary and will slow down the processing of screenshots for the dashboard, so please only use if needed. Feel free to reach out to applanga support for more info.
-	
- 	The Applanga SDK tries to find all IDs on the screen but you can also pass additional IDs in the **applangaIDs** parameter. 
- 	
-    *Note: It's not possible to make the screenshot like this in UI-Tests. The reason is, that in UI-Tests you don't have access to the real Applanga instance. See the alternative in the next Section: `Automated during UI Tests`.*
-
- 	5.4 **Automated during UITests**
-
-    To be able to use applanga test features add `ApplangaUITest` to your project and do the import as below. Refer to [Installation](#Installation) how to add the test package to your project.
-
-    ```swift
-    import ApplangaUITest
-    ```
- 	
- 	To capture screenshots from UITests running in Xcode you first have to initialize applanga with the current app instance so it can set specific launch arguments before starting the tests:
-
-    ```swift 
-    let app = XCUIApplication()
-    let applangaUITest = ApplangaUITest(app: app)
-    app.launch()
-    ```
-
-    To take a screenshot specify a tag and wait for it:
-    ```swift
-    wait(for: [applangaUITest!.takeScreenshot(tag: "Home")], timeout: 10.0)
-    ```
-
-    Full example:
     ```swift
     import ApplangaUITest
     class AutomatedScreenshotsTest: XCTestCase {
@@ -562,7 +551,7 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
             // after that repeat the screenshot without show id mode
             applangaUITest = ApplangaUITest(app: app, enableShowIdMode: false) 
             app.launch()
-            wait(for: [applangaUITest!.takeScreenshot(tag: "ScreentagName")], timeout: 10.0)
+            wait(for: [applangaUITest!.takeScreenshot(tag: "ScreenName")], timeout: 10.0)
         }
     }
     ```
@@ -673,7 +662,7 @@ You can specify a set of default groups and languages in your plist, which will 
    ```
     This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
 
-7. **Convert Placeholder**
+7. **Convert Placeholders**
 
     To convert placeholders between iOS and Android style you need to enable the following in your plist: 
 	
@@ -684,7 +673,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	...
    ```
 
-    ***Common placeholder***
+    ***Common placeholders***
 
     These placeholder will not be converted as they are supported on iOS and Android.
 
@@ -698,7 +687,8 @@ You can specify a set of default groups and languages in your plist, which will 
     - `%d` will remain `%d`
     - Positional placeholder as `%1$s` are converted to `%1$@` and vice-versa
 
-    ***Android placeholder***
+    ***Android placeholders***
+    
     - All instances of `%s` and `%S` will be converted to `%@`
     - Unsupported conversion types such as `%h` and `%tY` will convert to default `%@` type.
     - Boolean types `%b` and `%B` will be converted to `%@`
@@ -719,7 +709,18 @@ You can specify a set of default groups and languages in your plist, which will 
 	<string>zh-Hant-HK=zh-HK,es-CL=es-MX</string>
     ...
     ```
+	9. **Wait on App Start**
 
+    In order to receive the latest strings from your Applanga dashboard into your app, the sdk will wait until the initial update has finished, this causes up to a 10 second delay (typically faster) when starting.If the setting is set to Yes. If youd like this to happen in the background you can add the key `ApplangaWaitOnAppStart` and set it to NO as in the following example to your info.plist. The Applanga SDK will not delay the appstart but that comes with the downside that initial screens my not have the latest over the air strings. So if you enable this you should make sure that your settingsfile is up to date before a release and be aware that some outdated strings may be displayed.  
+
+	 Example:
+
+    ```xml
+    ...
+	<key>ApplangaWaitOnAppStart</key>
+	<false/>
+    ...
+    ```
 
 
 
