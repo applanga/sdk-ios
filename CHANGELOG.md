@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.167 (2 Mar 2023)
+#### Added
+- new Draft Mode dialog
+
+---
 ### Version 2.0.161 (15 Sep 2022)
 #### Fixed
 - build issues for carthage and cocoapods related to m1 macbooks

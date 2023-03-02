@@ -207,9 +207,16 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 + (void)showDraftModeDialog;
 
 /** change phone language to new language
+ The new language will be saved by default, and used for any subsequent app launches, to disable default persistence set ApplangaPersistentSetLanguage to false, in Info.plist
  @param language the language iso code
  */
 + (BOOL)setLanguage:(NSString*)language;
+
+/** change phone language to new language
+ @param language the language iso code
+ @param isPersistent when true, the new language will be saved, and used for any subsequent app launches
+ */
++ (BOOL)setLanguage:(NSString*)language persistent:(BOOL)isPersistent;
 
 /** change phone language to new language and fetch latest localization updates from Applanga
  @param language the language iso code

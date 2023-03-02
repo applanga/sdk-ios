@@ -1,0 +1,6 @@
+framework module ApplangaWatchOS {
+  umbrella header "ApplangaWatchOS.h"
+
+  export *
+  module * { export * }
+}

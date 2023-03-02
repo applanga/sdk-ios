@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name                = "Applanga"
-  s.version             = "2.0.161"
+  s.version             = "2.0.167"
   s.summary             = "This is the Applanga SDK"
   s.homepage            = "http://applanga.com"
   s.license             = { :type => 'Commercial', :file => 'LICENSE' }
   s.author              = { "Mbaas Development GmbH" => "developer@applanga.com" }
-  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "2.0.161" }
+  s.source              = { :git => "https://github.com/applanga/sdk-ios.git", :tag => "2.0.167" }
   s.library             = 'sqlite3', 'z'
   s.vendored_frameworks = ""
   s.requires_arc        = true
@@ -13,7 +13,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.ios.vendored_frameworks = 'Applanga.xcframework'
 
-  s.watchos.deployment_target = '2.0'
   s.watchos.preserve_paths      = 'ApplangaWatchOS.framework'
   s.watchos.public_header_files = 'ApplangaWatchOS.framework/Headers/Applanga.h'
   s.watchos.source_files        = 'ApplangaWatchOS.framework/Headers/Applanga.h'

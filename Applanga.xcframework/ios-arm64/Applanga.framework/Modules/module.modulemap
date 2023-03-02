@@ -1,0 +1,6 @@
+framework module Applanga {
+  umbrella header "Applanga.h"
+
+  export *
+  module * { export * }
+}

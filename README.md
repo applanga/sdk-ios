@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.161
+*Version:* 2.0.167
 
 *Website:* <https://www.applanga.com> 
 
@@ -595,7 +595,7 @@ You can specify a set of default groups and languages in your plist, which will 
 
 	In case your app's user has no internet connection, new translation updates can't be fetched, so the Applanga SDK falls back to the last locally cached version. If the app was started for the first time, there are no strings locally cached yet so Applanga SDK falls back to the Applanga Settings File which contains all strings from the moment it was generated, downloaded and integrated into your app before release. 
 
-	The Applanga SDK comes with a python (2.7) script called `settingsfile_update.py` which makes sure your app has always the latest settings file version. The script searches recursively for `*.applanga` files in your project and checks if a newer version is available. If so it replaces the old file with the newer Applanga Settings File from the Applanga backend. 
+	The Applanga SDK comes with a python script called `settingsfile_update.py` which makes sure your app has always the latest settings file version. The script searches recursively for `*.applanga` files in your project and checks if a newer version is available. If so it replaces the old file with the newer Applanga Settings File from the Applanga backend. 
 	
 	In XCode you go to `Build Phases` and `New Run Script Phase` and add the following line (if you are using CocoaPods):
 
@@ -612,7 +612,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	or if you are using Swift Package Manager:
 	
 	```
-	bash "${BUILD_DIR}/../../SourcePackages/checkouts/sdk-ios/Applanga.xcframework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
+	bash "${BUILD_DIR%Build/*}/SourcePackages/checkouts/sdk-ios/Applanga.xcframework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	
 	or if you are integrated the Applanga SDK manually:
@@ -658,7 +658,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	You can also use the following method at runtime
 
 	```
-	Applanga.setDraftModelEnabled(bool);
+	Applanga.setDraftModeEnabled(bool);
    ```
     This will overide the setting in the plist, but it will not override draft mode being disabled in the applanga dashboard.
 
@@ -732,7 +732,9 @@ For more details on that please have a look at our blogpost on [Translating Push
 
 ## SwiftUI
 
-Although not all Applanga features are supported yet in SwiftUI, you can easily localise your text components using this extention:
+To use Applana with SwiftUI please include the ApplanaSwiftUI framework into your project, follow the integration instructions in the [Readme](https://github.com/applanga/sdk-swiftui/blob/main/README.md).
+
+If you would like to keep using only the base Applanga framework, you could localize Text components using this extention:
 
 ```swift
 	//First add this extention to your project:

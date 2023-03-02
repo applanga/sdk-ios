@@ -8,13 +8,17 @@
 		<data>
 		z2GG1Gj/jhCUlWugzFwAiMr0uX4=
 		</data>
+		<key>Headers/ApplangaWatchOS.h</key>
+		<data>
+		nHTpaISQTFhkS19YKQiWPWpKGA8=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		7g5iPR3pAAuUkXX8CUYGnIEnBwY=
+		AUdDXqzEEu6hQ8W+UJ/iCWADqmU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		Y+upTdo1v4KUB0ekgNPBmkgKTzw=
+		1FULbuKqHGb+WMJt98eTbiAVFKY=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -30,15 +34,26 @@
 			Zy18nZsr73GvfTifGRACUf/ch4uNXuhhhP5UoU0cyL0=
 			</data>
 		</dict>
+		<key>Headers/ApplangaWatchOS.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nHTpaISQTFhkS19YKQiWPWpKGA8=
+			</data>
+			<key>hash2</key>
+			<data>
+			t+F8FhL1NgpoEW7/ItvUmYBVbeBkRpJqn/nSV+Ri2vE=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Y+upTdo1v4KUB0ekgNPBmkgKTzw=
+			1FULbuKqHGb+WMJt98eTbiAVFKY=
 			</data>
 			<key>hash2</key>
 			<data>
-			z3PUVxQl19FIROvMoh7U0zmF9aZ4MxE87UZPoICD43A=
+			dDcIU+0a2dbCApkEkO7RXEsBNzYe2jTZERJrOmzuN10=
 			</data>
 		</dict>
 	</dict>
