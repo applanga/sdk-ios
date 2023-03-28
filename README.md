@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.167
+*Version:* 2.0.170
 
 *Website:* <https://www.applanga.com> 
 
