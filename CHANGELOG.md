@@ -5,10 +5,16 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.171 (25 May 2023)
+#### Added
+- improved settings file handling
+
+--- 
 ### Version 2.0.170 (28 Mar 2023)
 #### Fixed
 - fix swiftUI string interpolation
 
+--- 
 ### Version 2.0.167 (2 Mar 2023)
 #### Added
 - new Draft Mode dialog
