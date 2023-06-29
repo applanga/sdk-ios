@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.171
+*Version:* 2.0.172
 
 *Website:* <https://www.applanga.com> 
 
@@ -18,6 +18,7 @@
   6. [SwiftUI](#swiftui)
   7. [WatchOS](#watchos)
   8. [MacOS](#macos)
+  9. [Branching](#branching)
 
 
 Automatic Push Notification Localization and InfoPlist.strings
@@ -772,7 +773,7 @@ A good practice is to take all your screenshots with show id mode enabled once a
 
 ## WatchOS 
 
-While screenshots and the draft mode menu are not availble, string upload and automatic storyboard translation work in WatchOS targets, just follow these extra steps to get it working.
+While screenshots and the draft mode menu are not available, string upload and automatic storyboard translation work in WatchOS targets, just follow these extra steps to get it working.
 
 **a.** When installing with cocoa pods or SPM you must also apply the applanga sdk to the watch target that ends with the word "extension".  
 
@@ -785,7 +786,7 @@ While screenshots and the draft mode menu are not availble, string upload and au
 
 ## MacOS 
 
-While screenshots and the draft mode menu are not availble, string upload and automatic storyboard translation work in MacOS targets, just install as you would the iOS sdk and use as normal.
+While screenshots and the draft mode menu are not available, string upload and automatic storyboard translation work in MacOS targets, just install as you would the iOS sdk and use as normal.
 	
 ## TV OS
 
@@ -793,5 +794,24 @@ Automatic translations and draft mode will work on TV OS without requiring any s
 
 The only feature not avalabile currently is the draft mode screenshot menu.
 
+## Branching
 
+If your project is a branching project use at least SDK version 2.0.172 and update your settings file.
+The settings file defines the default branch for your current app.
+This branch is used on app start and for update calls.
+To be sure branching is working look for the log line: `Branching is enabled.`
+
+To learn more about branching please have a look [here](www.applanga.com/docs/advanced-features/branching).
+
+### Draft Mode
+
+When enabling the Draft Mode you can switch your branch at runtime - an app restart is required.
+You also can use our draft overlay to switch your current branch.
+Every screenshot you take is linked to the current branch.
+
+### Production Apps
+
+Already published apps that still use settings files without branching and older SDKs will still work and they will use the default branch defined on the Applanga dashboard.
+
+ 
 

@@ -45,17 +45,34 @@ import UIKit
         if let json = try? JSONEncoder().encode(screenshotInfo) {
             jsonString = String(data: json, encoding: .utf8)!
         }
+        
         let pasteBoard = UIPasteboard.general
+        
         jsonString = "applanga:" + jsonString
         pasteBoard.string = jsonString;
         
         sleep(1)
+        
+        // Bypass the pasteboard permission alert
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        
+        let permissionButton = springboard.buttons.element(boundBy: 1) // assume the allow button is at index 1, to make it language independent
+        if permissionButton.waitForExistence(timeout: 5) {
+            permissionButton.tap()
+        }
         
         CFNotificationCenterPostNotification(darwinNotificationCenter,
                                              CFNotificationName(prefix + tagScreenshotStart as CFString),
                                              nil,
                                              nil,
                                              true)
+        
+        // Bypass the pasteboard permission alert also for the main target after the screenshot uploaded
+        let mainAppPermissionButton = springboard.buttons.element(boundBy: 1)
+        if mainAppPermissionButton.waitForExistence(timeout: 5) {
+            mainAppPermissionButton.tap()
+        }
+        
         return expectation
     }
     
