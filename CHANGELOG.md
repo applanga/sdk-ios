@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.172 (29 Jun 2023)
+### Version 2.0.173 (29 Jun 2023)
 #### Fixed
 - Auto allow pasteboard permission during UI tests screenshot
 - Only show a warning for a screenshot when an actual SwiftUI view is in the presented view controller hierarchy 
