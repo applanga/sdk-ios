@@ -251,6 +251,9 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (void)setScreenshotInterface:(id<ApplangaScreenshotInterface>)screenshotInterface;
 
+/**This method returns the branchd id found in the applanga settings file. It returns NIL if branchin is not enabled**/
++ (NSString*)getSettingsFileBranchId;
+
 /** reset the instance and saved values
  */
 + (void)reset;

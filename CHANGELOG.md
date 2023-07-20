@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.174 (20 Jul 2023)
+#### Added
+- branching support for Flutter and React-Native 
+
+--- 
 ### Version 2.0.173 (29 Jun 2023)
 #### Fixed
 - Auto allow pasteboard permission during UI tests screenshot
