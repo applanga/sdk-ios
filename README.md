@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.174
+*Version:* 2.0.177
 
 *Website:* <https://www.applanga.com> 
 
@@ -710,7 +710,49 @@ You can specify a set of default groups and languages in your plist, which will 
 	<string>zh-Hant-HK=zh-HK,es-CL=es-MX</string>
     ...
     ```
-	9. **Wait on App Start**
+
+	The locale is mapped in all places in the sdk, except when used in combination with [custom language fallback](#enable-custom-language-fallback). In this case the custom fallback performed as set in the plist, no additional mapping occurres for the entries in that plist.
+    If you have a locale that maps to another locale that has a custom fallback, this would also work, and the custom fallback will be performed after the mapping.
+
+9. **Enable system language fallback**
+	
+	By default applanga uses a custom device locale order, this plist value makes the SDK iterate over the languages by using the priority set by the system. This order is used when translating strings and performing a fallback when the string wasn't found for a specified language. Then the SDK would try to translate using the next language in the list. The available possibilites are:
+
+	`applanga`: The default SDK order
+	`system`: Use the device system order
+
+	```xml
+	...
+	<key>ApplangaLanguageFallback</key>
+	<string>system</string>
+	...
+	```
+
+10. **Enable custom language fallback**<a name="enable-custom-language-fallback"></a>
+	
+	This plist value is a dictionary which allows to set a custom fallback per language. When the SDK would need to translate a key with a specified language, it uses the order as provided. This overrides any other system or default fallbacks only for those languages. Other languages work according to the fallback specified using the ApplangaLanguageFallback value (or default if it's not set). The fallback is only overriden for the top level language, so it's not possible to "nest" the custom fallbacks.
+
+	Example
+	```xml
+	...
+	<key>ApplangaCustomLanguageFallback</key>
+	<dict>
+		<key>es-MX</key>
+		<array>
+			<string>es-MX</string>
+			<string>es-US</string>
+			<string>es</string>
+		</array>
+		<key>en-US</key>
+		<array>
+			<string>en-GB</string>
+			<string>de-DE</string>
+		</array>
+	</dict>
+	...
+	```
+
+11. **Wait on App Start**
 
     In order to receive the latest strings from your Applanga dashboard into your app, the sdk will wait until the initial update has finished, this causes up to a 10 second delay (typically faster) when starting.If the setting is set to Yes. If youd like this to happen in the background you can add the key `ApplangaWaitOnAppStart` and set it to NO as in the following example to your info.plist. The Applanga SDK will not delay the appstart but that comes with the downside that initial screens my not have the latest over the air strings. So if you enable this you should make sure that your settingsfile is up to date before a release and be aware that some outdated strings may be displayed.  
 
@@ -723,6 +765,20 @@ You can specify a set of default groups and languages in your plist, which will 
     ...
     ```
 
+12. **Automatic upload of a tag with current app strings**
+
+	In case you would like to upload a tag with all the local strings in your app, add the following key in the plist
+    
+	```xml
+    ...
+	<key>ApplangaTagLocalStringsPrefix</key>
+	<string>some_tag</string>
+    ...
+    ```
+
+	This plist value would be used as the tag prefix combined with the bundle version (for example some_tag1), then when you are running with the app with the debugger connected, an automatic tag upload would be performed after Applanga.update(), which is also done on app start. The tag would be created on the dashboard if it doesn't exist yet.
+
+	It's possible to combine this option with the `ApplangaAdditionalStringFiles`, and with `ApplangaAdditionalFrameworks` keys to include strings also from those places
 
 
 ## Automatic Push Notification Localization and InfoPlist strings
@@ -796,7 +852,7 @@ The only feature not avalabile currently is the draft mode screenshot menu.
 
 ## Branching
 
-If your project is a branching project use at least SDK version 2.0.174 and update your settings file.
+If your project is a branching project use at least SDK version 2.0.177 and update your settings file.
 The settings file defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`

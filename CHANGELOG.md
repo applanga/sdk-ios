@@ -5,6 +5,17 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.177 (12 Oct 2023)
+#### Added
+- option for system language fallback
+- more performant settings file handling
+- option for custom fallbacks
+- option for local string tagging in draft mode
+
+#### Fixed
+- new language on the dashboard sync on first app start
+
+--- 
 ### Version 2.0.174 (20 Jul 2023)
 #### Added
 - branching support for Flutter and React-Native 
