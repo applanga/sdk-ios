@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.179 (4 Jan 2024)
+### Version 2.0.180 (4 Jan 2024)
 ### Added
 - introducing error messages for read-only branches
 - smaller general code optimizations
