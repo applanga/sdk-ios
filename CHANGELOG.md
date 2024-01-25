@@ -5,11 +5,20 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.181 (25 Jan 2024)
+#### Added
+- shrinked very first Applanga.update() response
+- smaller general code optimizations
+#### Fixed
+- fixed possible caching issues
+
+---
 ### Version 2.0.180 (4 Jan 2024)
 ### Added
 - introducing error messages for read-only branches
 - smaller general code optimizations
 
+---
 ### Version 2.0.177 (12 Oct 2023)
 #### Added
 - option for system language fallback
