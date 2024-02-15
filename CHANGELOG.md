@@ -5,7 +5,15 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.181 (25 Jan 2024)
+### Version 2.0.182 (15 Feb 2024)
+#### Added
+- smaller general code optimizations
+
+#### Fixed
+- missing applanga_settings file alert was not showing
+
+---
+#### Version 2.0.181 (25 Jan 2024)
 #### Added
 - shrinked very first Applanga.update() response
 - smaller general code optimizations
