@@ -5,7 +5,24 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.184 (12 Mar 2024)
+#### Added
+- improved Appium Screenshot support
+
+#### Fixed
+- removed unnecessary warnings for Flutter and React-Native builds
+- possible placeholder crash while being in draftmode
+
+---
 ### Version 2.0.182 (15 Feb 2024)
+#### Added
+- smaller general code optimizations
+
+#### Fixed
+- missing applanga_settings file alert was not showing
+
+---
+#### Version 2.0.181 (25 Jan 2024)
 #### Added
 - smaller general code optimizations
 
