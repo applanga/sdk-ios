@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.184
+*Version:* 2.0.185
 
 *Website:* <https://www.applanga.com> 
 
@@ -557,6 +557,21 @@ Besides the Basic usage Applanga offers support for ***named arguments*** in you
     }
     ```
 
+6. **Get available languages**
+
+  	It is possible to get the currently added languages on the dashboard:
+  	
+	```objc
+	//objc
+	NSArray *languages = [Applanga availableLanguages];
+	```
+	```swift
+	//swift
+	let languages = Applanga.availableLanguages()
+	```
+	
+	The result will contain the iso string of each language that has been added on the dashboard.
+	These values are synced during the `Applanaga.update()` response. So to retrieve any changes to the available languages on the dashboard, an update() should be performed manually before using this list. 
 		
 ## Optional settings
 
@@ -601,13 +616,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	In XCode you go to `Build Phases` and `New Run Script Phase` and add the following line (if you are using CocoaPods):
 
 	```
-	bash "$SOURCE_ROOT/Pods/Applanga/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
-	```
-	
-	or if you are using Carthage:
-
-	```
-	bash "$SOURCE_ROOT/Carthage/Checkouts/sdk-ios/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
+	bash "$SOURCE_ROOT/Pods/Applanga/Applanga.xcframework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	
 	or if you are using Swift Package Manager:
@@ -619,7 +628,7 @@ You can specify a set of default groups and languages in your plist, which will 
 	or if you are integrated the Applanga SDK manually:
 	
 	```
-	bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.framework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
+	bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.xcframework/update-settingsfile.sh" "$SOURCE_ROOT/$TARGET_NAME"
 	```
 	--
 	
@@ -852,7 +861,7 @@ The only feature not avalabile currently is the draft mode screenshot menu.
 
 ## Branching
 
-If your project is a branching project use at least SDK version 2.0.184 and update your settings file.
+If your project is a branching project use at least SDK version 2.0.185 and update your settings file.
 The settings file defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`

@@ -254,6 +254,11 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 /**This method returns the branchd id found in the applanga settings file. It returns NIL if branchin is not enabled**/
 + (NSString*)getSettingsFileBranchId;
 
+/** Returns all the available language configured on the dashboard for the current project.
+ The values in the array will be the iso language code.
+ */
++ (NSArray<NSString *> *)availableLanguages;
+
 /** reset the instance and saved values
  */
 + (void)reset;
