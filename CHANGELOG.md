@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.186 (26 Apr 2024)
+#### Fixed
+- tvos projects compilation failure
+
+--
 ### Version 2.0.185 (18 Apr 2024)
 #### Added
 - public method to retrieve available languages on the dashboard
