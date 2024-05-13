@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.191 (13 May 2024)
+#### Added
+- tvos draft mode support
+
+--
 ### Version 2.0.187 (26 Apr 2024)
 #### Fixed
 - tvos projects compilation failure

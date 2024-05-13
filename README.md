@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.187
+*Version:* 2.0.191
 
 *Website:* <https://www.applanga.com> 
 
@@ -855,13 +855,22 @@ While screenshots and the draft mode menu are not available, string upload and a
 	
 ## TV OS
 
-Automatic translations and draft mode will work on TV OS without requiring any special changes. 
+Automatic translations will work on TV OS without requiring any special changes. 
 
-The only feature not avalabile currently is the draft mode screenshot menu.
+To present the draft mode, use the following code :
+
+```swift
+	Applanga.showDraftModeDialog()
+```
+
+after the draft mode has been enabled, you can present the test menu overlay:
+```swift
+	Applanga.setScreenShotMenuVisible(true)
+```
 
 ## Branching
 
-If your project is a branching project use at least SDK version 2.0.187 and update your settings file.
+If your project is a branching project use at least SDK version 2.0.191 and update your settings file.
 The settings file defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`
