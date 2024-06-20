@@ -5,21 +5,29 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.192 (20 Jun 2024)
+#### Added
+- smaller general code optimizations
+
+#### Fixed
+- possible macOS compilation failure when using SPM
+
+---
 ### Version 2.0.191 (13 May 2024)
 #### Added
 - tvos draft mode support
 
---
+---
 ### Version 2.0.187 (26 Apr 2024)
 #### Fixed
 - tvos projects compilation failure
 
---
+---
 ### Version 2.0.185 (18 Apr 2024)
 #### Added
 - public method to retrieve available languages on the dashboard
 
---
+---
 ### Version 2.0.184 (12 Mar 2024)
 #### Added
 - improved Appium Screenshot support

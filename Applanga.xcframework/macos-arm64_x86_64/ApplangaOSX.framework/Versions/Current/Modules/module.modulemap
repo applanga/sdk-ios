@@ -1,6 +1,0 @@
-framework module ApplangaOSX {
-  umbrella header "ApplangaOSX.h"
-
-  export *
-  module * { export * }
-}
