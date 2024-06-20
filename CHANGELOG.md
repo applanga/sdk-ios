@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.192 (20 Jun 2024)
+### Version 2.0.193 (20 Jun 2024)
 #### Added
 - smaller general code optimizations
 
