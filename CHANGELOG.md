@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.194 (4 Jul 2024)
+#### Fixed
+- MAU request
+
+---
 ### Version 2.0.193 (20 Jun 2024)
 #### Added
 - smaller general code optimizations
