@@ -27,7 +27,7 @@ echo "Applanga SDK Version: $APPLANGA_FRAMEWORK_BUNDLEID"
 
 # if it's a xcframework project we retrieve the bundle id differently
 if [ "$APPLANGA_FRAMEWORK_BUNDLEID" == "" ] || [ "${APPLANGA_FRAMEWORK_DIR: -11}" == "xcframework" ]; then
-     APPLANGA_FRAMEWORK_BUNDLEID=$(plutil -extract CFBundleShortVersionString xml1 -o - $APPLANGA_FRAMEWORK_DIR/ios-arm64_armv7/Applanga.framework/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p")
+     APPLANGA_FRAMEWORK_BUNDLEID=$(plutil -extract CFBundleShortVersionString xml1 -o - $APPLANGA_FRAMEWORK_DIR/ios-arm64/Applanga.framework/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p")
 fi
 
 # check for python

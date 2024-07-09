@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.194
+*Version:* 2.0.195
 
 *Website:* <https://www.applanga.com> 
 
@@ -870,7 +870,7 @@ after the draft mode has been enabled, you can present the test menu overlay:
 
 ## Branching
 
-If your project is a branching project use at least SDK version 2.0.194 and update your settings file.
+If your project is a branching project use at least SDK version 2.0.195 and update your settings file.
 The settings file defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`
