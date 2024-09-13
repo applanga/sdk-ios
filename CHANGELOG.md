@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.196 (13 Sep 2024)
+#### Added
+- internal exception logging
+
+--
 ### Version 2.0.195 (9 Jul 2024)
 #### Fixed
 - settings file auto update script causing xcode build failure
