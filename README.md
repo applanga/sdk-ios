@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.198
+*Version:* 2.0.200
 
 *Website:* <https://www.applanga.com> 
 
@@ -870,7 +870,7 @@ after the draft mode has been enabled, you can present the test menu overlay:
 
 ## Branching
 
-If your project is a branching project use at least SDK version 2.0.198 and update your settings file.
+If your project is a branching project use at least SDK version 2.0.200 and update your settings file.
 The settings file defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`
@@ -888,4 +888,15 @@ Every screenshot you take is linked to the current branch.
 Already published apps that still use settings files without branching and older SDKs will still work and they will use the default branch defined on the Applanga dashboard.
 
  
+## Privacy Manifest
+
+The SDK includes a privacy manifest which declares these items, all of which marked as `tracking`=`NO`:
+
+### API Usage
+ - `NSPrivacyAccessedAPICategoryUserDefaults` - UserDefaults is only used to save SDK internal state, for example if the draft mode was enabled.
+
+ ### Collected Data
+ - `NSPrivacyCollectedDataTypeOtherDiagnosticData` - The SDK sends data when it detects runtime exceptions. The data contains SDK internal values and stack traces.
+ - `NSPrivacyCollectedDataTypeDeviceID` - The `identifierForVendor` is used to count MAU
+
 
