@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.201 (31 Oct 2024)
+### Version 2.0.202 (31 Oct 2024)
 #### Fixed
 - draft mode dialog current branch selection appears blank
 - draft mode text font issue
