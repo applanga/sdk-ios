@@ -5,6 +5,14 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.201 (31 Oct 2024)
+#### Fixed
+- draft mode dialog current branch selection appears blank
+- draft mode text font issue
+- Locale.preferredLanguages growing indefinitely when setting different languages using Applanga.setLanguage
+- handle possible crash during internal sdk exception handling
+
+---
 ### Version 2.0.200 (9 Oct 2024)
 #### Added
 - privacy manifest
