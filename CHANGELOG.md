@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.203 (21 Nov 2024)
+#### Fixed
+- issues with internal exception logging in certain scenarios
+
+---
 ### Version 2.0.202 (31 Oct 2024)
 #### Fixed
 - draft mode dialog current branch selection appears blank
