@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.203
+*Version:* 2.0.204
 
 *Website:* <https://www.applanga.com> 
 
@@ -789,6 +789,23 @@ You can specify a set of default groups and languages in your plist, which will 
 
 	It's possible to combine this option with the `ApplangaAdditionalStringFiles`, and with `ApplangaAdditionalFrameworks` keys to include strings also from those places
 
+13. **Use supported language as screenshot language value**
+
+	By default, when uploading a screenshot using the SDK,
+	it sets the language of the screenshot as the current preferred device locale 
+	(if it was mapped, or overriden with Applanga.setLanguage then that value will be used).
+	It is possible to make the sdk set the actual language used for localizing the strings,
+	by adding the following key in the plist:
+    
+	```xml
+    ...
+	<key>ApplangaScreenshotUseSupportedLanguageFallback</key>
+	<true/>
+    ...
+    ```
+
+	When set to `true`, the value will be the first supported language in the fallback list. 
+
 
 ## Automatic Push Notification Localization and InfoPlist strings
 
@@ -870,7 +887,7 @@ after the draft mode has been enabled, you can present the test menu overlay:
 
 ## Branching
 
-If your project is a branching project use at least SDK version 2.0.203 and update your settings file.
+If your project is a branching project use at least SDK version 2.0.204 and update your settings file.
 The settings file defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`
