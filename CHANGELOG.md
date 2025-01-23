@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.205 (23 Jan 2025)
+#### Added
+- smaller bugfixes and internal performance improvements 
+
+---
 ### Version 2.0.204 (10 Dec 2024)
 #### Added
 - new plist setting `ApplangaScreenshotUseSupportedLanguageFallback`
