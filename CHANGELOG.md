@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.208 (21 Feb 2025)
+### Version 2.0.209 (21 Feb 2025)
 #### Fixed
 - App freeze on launch when update request fails
 
