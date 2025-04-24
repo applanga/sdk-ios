@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.213 (24 Apr 2025)
+#### Added
+- added dynamic string support for our flutter SDK 
+
+--- 
 ### Version 2.0.212 (27 Feb 2025)
 #### Fixed
 - possible crash during network requests

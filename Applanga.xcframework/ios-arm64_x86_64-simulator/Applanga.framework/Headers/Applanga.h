@@ -134,6 +134,20 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
 
 + (NSDictionary*) localizeMap:(NSDictionary*)map andUpdateMissingStrings:(BOOL)updateMissingStrings;
 
+/**
+ * Get all localized strings for given languages. It will return a map with the language code
+ * as key and a map with the localized strings as value. It does not calculate any fallbacks,
+ * similar to `localizeMap`.
+ * So if a string id and translation does exist in e.g. the base language "en" but not in
+ * "en-US" and the languages list contains "en-US" the resulting map will be empty, as the
+ * strings are not located in the that language but in "en".
+ *
+ * @param languages asking for string ids and it their translations for a specific language
+ * @return returns  a map with the language code as key and a map with the localized strings as value
+ *                  similar to `localizeMap()`
+ */
++ (NSDictionary*) localizedStringsForLanguages:(NSArray*)languages;
+
 /** capture a screenshot, upload it and link it to the given tag and ids
  @param tag the tag this screenshot should be assigned to
  @param applangaIDs optional array of ids that should be linked in this screenshot
