@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.214 (15 May 2025)
+#### Fixed
+- possible crash on network timeout
+
+---
 ### Version 2.0.213 (24 Apr 2025)
 #### Added
 - added dynamic string support for our flutter SDK 
