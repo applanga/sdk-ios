@@ -5,6 +5,16 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.215 (17 Jul 2025)
+#### Added
+- updated the minimum deployments target: iOS 12, watchOS 4, tvOS 13
+
+#### Fixed
+- removed obsolete Applanga.setEnabled method
+- possible Watchdog crash during app launch on slow network when ApplangaWaitOnAppStart enabled
+- possible crash when performing multiple Applanga.update requests simultaneously 
+
+---
 ### Version 2.0.214 (15 May 2025)
 #### Fixed
 - possible crash on network timeout

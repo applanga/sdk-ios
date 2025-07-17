@@ -238,15 +238,6 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (void)setLanguageAndUpdate:(NSString*)language withCompletionHandler:(void (^)(BOOL success))completionHandler;
 
-/** enable or disable Applanga
- @param enabled true if applanga should be active (default)
- */
-+ (void)setEnabled:(BOOL)enabled;
-
-/** is Applanga set to be enabled (default: true)
- */
-+ (BOOL)enabled;
-
 /** please use setDraftModeEnabled instead
 */
 + (void)setDraftModelEnabled:(BOOL)enabled DEPRECATED_MSG_ATTRIBUTE("please use setDraftModeEnabled instead");

@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.214
+*Version:* 2.0.215
 
 *Website:* <https://www.applanga.com> 
 
@@ -733,6 +733,10 @@ You can specify a set of default groups and languages in your plist, which will 
 	
 	This plist value is a dictionary that allows to set a custom fallback per language. When the SDK needs to translate a key with a specified language, it uses the order as provided. This overrides any other system or default fallbacks only for those languages. Other languages work according to the fallback specified using the `ApplangaLanguageFallback` value (or default if it's not set). The fallback is only overridden for the top level language, so it's not possible to "nest" the custom fallbacks.
 
+	> [!IMPORTANT]
+	> The specified array of languages fully overrides the order for a given language.
+	You should include that language itself in the array otherwise it will <b>not</b> be added automatically into the list, and skipped during localization. 
+
 	Example:
 	```xml
 	...
@@ -884,7 +888,7 @@ after the Draft Mode has been enabled, you can present the test menu overlay:
 
 ## Branching
 
-If your project is a branching project, use at least the SDK version 2.0.214 and update your Settings File.
+If your project is a branching project, use at least the SDK version 2.0.215 and update your Settings File.
 The Settings File defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`
