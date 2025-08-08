@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.216 (8 Aug 2025)
+#### Fixed
+- improved internal error reporting
+- strings were not detected when using ApplangaUITest.takeScreenshot in swiftUI apps
+
+---
 ### Version 2.0.215 (17 Jul 2025)
 #### Added
 - updated the minimum deployments target: iOS 12, watchOS 4, tvOS 13
