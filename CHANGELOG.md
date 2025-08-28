@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.217 (28 Aug 2025)
+#### Fixed
+- draft overlay screenshot alert not dismissed when capturing multiple times
+- strings were not localized when device has low space
+
+---
 ### Version 2.0.216 (8 Aug 2025)
 #### Fixed
 - improved internal error reporting
