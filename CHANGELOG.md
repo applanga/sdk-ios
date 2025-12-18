@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.218 (18 Dec 2025)
+#### Fixed
+- skip redundant initial update by the native sdk, when using the react-native/flutter sdks
+- generated id for MAU request changed after app re-install
+
+---
 ### Version 2.0.217 (28 Aug 2025)
 #### Fixed
 - draft overlay screenshot alert not dismissed when capturing multiple times
