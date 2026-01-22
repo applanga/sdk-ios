@@ -119,6 +119,27 @@ ALPluralRule ALPluralRuleForQuantity(NSUInteger quantity);
  */
 + (NSString*)localizedStringForKey:(NSString*)key withArguments:(NSDictionary*)arguments andPluralRule:(ALPluralRule)pluralRule __attribute__((deprecated));
 
+/** get localized string for given key for a specific language, returns nil when there is no translation for that language
+ @param key the string key from Applanga
+ @param language the iso language code that should be used to get the translation
+ */
++ (NSString*)localizedStringForKey:(NSString*)key language:(NSString *)language;
+
+/** get localized string for given key and arguments for a specific language, returns nil when there is no translation for that language
+ @param key the string key from Applanga
+ @param language the iso language code that should be used to get the translation
+ @param arguments dictionary with named arguments that will be replaced in the string
+ */
++ (NSString*)localizedStringForKey:(NSString*)key arguments:(NSDictionary*)arguments language:(NSString *)language;
+
+/** get localized string for given key, arguments  and pluralisation for a specific language, returns nil when there is no translation for that language
+ @param key the string key from Applanga
+ @param language the iso language code that should be used to get the translation
+ @param arguments dictionary with named arguments that will be replaced in the string
+ @param pluralRule the pluralisation / ALPluralRule that should be used
+ */
++ (NSString*)localizedStringForKey:(NSString*)key arguments:(NSDictionary*)arguments pluralRule:(ALPluralRule)pluralRule language:(NSString *)language;
+
 /** *!!!SLOW!!!* should not be used often
  * returns a list of all localized strings for given language
  @param language the language iso code

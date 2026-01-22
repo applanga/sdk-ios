@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.218
+*Version:* 2.0.219
 
 *Website:* <https://www.applanga.com> 
 
@@ -179,7 +179,7 @@ Besides the Basic usage, Applanga offers support for ***named arguments*** in yo
 	
 	So the ***zero*** pluralized ID for ***"APPLANGA_ID"*** is ***"APPLANGA_ID[zero]"***
 		
-2. **Update Content**
+2. **Update Content**<a name="update-content"></a>
 	
 	To trigger an update call:
 	
@@ -263,7 +263,26 @@ Besides the Basic usage, Applanga offers support for ***named arguments*** in yo
 			} 
 	}
 	```
-	
+
+4. **Localize key for specific language**
+
+	It is possible to get a translation for a key regardless of the currently set language.
+
+	```objc
+	//objc
+	[Applanga localizedStringForKey:@"some_key" language:@"de"]; 
+	```
+	```swift
+	//swift
+	Applanga.localizedString(forKey: "some_key", language: "de")
+	```
+
+	When using this method, it might be this language is not part of the original device language fallback.
+	If it is already known which languages will be used with this method,
+	it is best to include them in the Applanga.update call, to have the newest translations.
+
+	You can use the plist key `ApplangaUpdateLanguages`, or directly add the languages to the [update call](#update-content)
+
 4. **WebViews**
 	
 	Applanga can also translate content in your WebViews if it is enabled.
@@ -888,7 +907,7 @@ after the Draft Mode has been enabled, you can present the test menu overlay:
 
 ## Branching
 
-If your project is a branching project, use at least the SDK version 2.0.218 and update your Settings File.
+If your project is a branching project, use at least the SDK version 2.0.219 and update your Settings File.
 The Settings File defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`
@@ -918,3 +937,6 @@ The SDK includes a privacy manifest that declares these items, all of which mark
  - `NSPrivacyCollectedDataTypeDeviceID` - The `identifierForVendor` is used to count MAU
 
 
+## Framework size
+
+**Total size**: 10 MB
