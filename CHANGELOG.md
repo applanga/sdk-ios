@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.220 (12 Feb 2026)
+#### Fixed
+- possible crash when update response contains null values
+
+---
 ### Version 2.0.219 (22 Jan 2026)
 #### Added
 - new methods to get translated values for keys in specific language
