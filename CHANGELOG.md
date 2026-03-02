@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.222 (2 Mar 2026)
+### Version 2.0.223 (2 Mar 2026)
 #### Fixed
 - attributed strings lost attributes when set to UILabel
 - modifiers for swifui TextField placeholder not applied
