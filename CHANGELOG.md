@@ -5,7 +5,15 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.225 (16 Apr 2026)
+### Version 2.0.226 (16 Apr 2026)
+#### Added
+- when invalid values detected in update response, stop reading further changes
+
+#### Fixed
+- memory leak due to retain cycle when performing the initial update request
+
+---
+### Version 2.0.223 (2 Mar 2026)
 #### Fixed
 - attributed strings lost attributes when set to UILabel
 - modifiers for swifui TextField placeholder not applied
