@@ -5,6 +5,12 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.227 (7 May 2026)
+#### Fixed
+- keys with an empty local value are no longer uploaded part of missing ids collection for that language 
+- redundant initial update was not skipped for react-native apps when not implementing RCTAppDelegate
+
+---
 ### Version 2.0.226 (16 Apr 2026)
 #### Added
 - when invalid values detected in update response, stop reading further changes
