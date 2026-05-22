@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.230 (22 May 2026)
+#### Fixed
+- settingsfile partial extraction issue for offline apps
+
+---
 ### Version 2.0.228 (7 May 2026)
 #### Fixed
 - keys with an empty local value are no longer uploaded part of missing ids collection for that language 
