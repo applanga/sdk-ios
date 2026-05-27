@@ -5,6 +5,11 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.231 (27 May 2026)
+#### Fixed
+- placeholder conversion now runs properly after a settings file update
+
+---
 ### Version 2.0.230 (22 May 2026)
 #### Fixed
 - settingsfile partial extraction issue for offline apps
