@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		V4zKfNDDoVEH+dC/S+02r9uO2oM=
+		k4TXdMPX885wWkepOqRDcehnjLk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -29,10 +29,6 @@
 	<dict>
 		<key>Headers/Applanga.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			i081kKrRufcqdwk7NRWgB+rexm0=
-			</data>
 			<key>hash2</key>
 			<data>
 			G9ADnxoljUcNTogHSoSoKNKtk1SRSOWKU1Mynyr8w0A=
@@ -40,10 +36,6 @@
 		</dict>
 		<key>Headers/ApplangaWatchOS.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			nHTpaISQTFhkS19YKQiWPWpKGA8=
-			</data>
 			<key>hash2</key>
 			<data>
 			t+F8FhL1NgpoEW7/ItvUmYBVbeBkRpJqn/nSV+Ri2vE=
@@ -51,10 +43,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			T8RtAjvsEuL+IlavKgpLs3oJm48=
-			</data>
 			<key>hash2</key>
 			<data>
 			Ue1lr6hqnjS1vpY83HMmq758jRZKkvO9vSIZZBMTUN0=
@@ -62,10 +50,6 @@
 		</dict>
 		<key>PrivacyInfo.xcprivacy</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bcoEuKv9iKkRxQ4NCkmQ7lHpo+U=
-			</data>
 			<key>hash2</key>
 			<data>
 			CwrIO5oFRcrpfPeb4yLmo5wc3XyV/BUqiQolDKZNu8E=

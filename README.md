@@ -1,6 +1,6 @@
 # Applanga SDK for iOS Localization
 ***
-*Version:* 2.0.235
+*Version:* 2.0.236
 
 *Website:* <https://www.applanga.com> 
 
@@ -24,13 +24,6 @@
 Automatic Push Notification Localization and InfoPlist.strings
 
 ## Installation
-#### CocoaPods [[?](http://cocoapods.org)]
-
-1. Refer to CocoaPod’s [Getting Started Guide](http://cocoapods.org/#getstarted) for detailed instructions about CocoaPods.
-
-2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`. To be able to create screenshots during UITests, insert pod 'ApplangaUITest' for your UITest Target.
-
-3. Once you have done so, re-run `pod install` from the command line.
 
 #### Swift Package Manager [[?](https://swift.org/package-manager/)]
 
@@ -51,7 +44,17 @@ Paste the following line in this `Run Script Phase`'s script text field:
 	```bash
 	bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/Applanga.framework/strip-framework.sh"
 	```
- 
+
+#### CocoaPods [[?](http://cocoapods.org)]
+
+##### NOTE: CocoaPods release is frozen, no more updates will be available for the current last version.
+
+1. Refer to CocoaPod’s [Getting Started Guide](http://cocoapods.org/#getstarted) for detailed instructions about CocoaPods.
+
+2. After you have created your Podfile, insert this line of code: `pod 'Applanga'`. To be able to create screenshots during UITests, insert pod 'ApplangaUITest' for your UITest Target.
+
+3. Once you have done so, re-run `pod install` from the command line.
+
 ## Configuration
 1. To start iOS Localization with Applanga, download the Applanga Settings File for your app from the Project dashboard by clicking the ***[Prepare Release]*** button and then clicking ***[Get Settings File]***.
  
@@ -482,7 +485,7 @@ Besides the Basic usage, Applanga offers support for ***named arguments*** in yo
  	
  	To manually capture a screenshot, you first have to set your app into [Draft Mode](https://www.applanga.com/docs/translation-management-dashboard/draft_on-device-testing).
  	 
- 	With your app in Draft Mode, all you have to do is to make a two finger swipe downwards.
+ 	With your app in Draft Mode, all you have to do is to make a two finger swipe downwards (on Xcode 27 simulators see the note in [Draft Mode](#draft-mode)).
  	This will show the screenshot menu and load a list of [tags](https://applanga.com/docs#manage_tags).
  	
  	You can now choose a tag and press *capture screenshot* to capture and upload a screenshot including all meta-data for the currently visible screen and assign it to the selected tag.
@@ -907,7 +910,7 @@ after the Draft Mode has been enabled, you can present the test menu overlay:
 
 ## Branching
 
-If your project is a branching project, use at least the SDK version 2.0.235 and update your Settings File.
+If your project is a branching project, use at least the SDK version 2.0.236 and update your Settings File.
 The Settings File defines the default branch for your current app.
 This branch is used on app start and for update calls.
 To be sure branching is working look for the log line: `Branching is enabled.`
@@ -919,6 +922,8 @@ To learn more about branching, read our article on [branching](www.applanga.com/
 When enabling the Draft Mode, you can switch your branch at runtime - an app restart is required.
 You also can use our Draft Mode menu to switch to switch to another branch.
 Every screenshot you take is linked to the current branch.
+
+Note: On Xcode 27 and Device Hub, it is currently no longer possible to use gestures on the simulator. If you would like to show the Draft Mode dialog and the screenshot menu, use the runtime methods `Applanga.showDraftModeDialog` and `Applanga.setScreenShotMenuVisible` by calling them from your code.
 
 ### Production Apps
 

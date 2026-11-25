@@ -5,6 +5,18 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
+### Version 2.0.236 (25 Nov 2026)
+#### Added
+- improved screenshot handling when using the ApplangaSwiftUI framework
+- updated the minimum deployment targets: iOS 15, tvOS 15, watchOS 9, macOS 12
+- cocoapods deprecation notice: this is the final version, future versions ship via SPM only
+
+#### Fixed
+- prevent automatic update call after recovering from read/write failures
+- remove possible low disk space alert presented to users
+- placeholder converstion possibly run more than once on appstart
+
+---
 ### Version 2.0.235 (27 May 2026)
 #### Fixed
 - placeholder conversion now runs properly after a settings file update
@@ -68,7 +80,7 @@
 ---
 ### Version 2.0.215 (17 Jul 2025)
 #### Added
-- updated the minimum deployments target: iOS 12, watchOS 4, tvOS 13
+- updated the minimum deployment targets: iOS 12, watchOS 4, tvOS 13
 
 #### Fixed
 - removed obsolete Applanga.setEnabled method
