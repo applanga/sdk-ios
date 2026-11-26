@@ -5,7 +5,7 @@
 *Applanga iOS Documentation:* <https://www.applanga.com/docs-integration/ios> 
 ***
 
-### Version 2.0.238 (26 Nov 2026)
+### Version 2.0.239 (26 Nov 2026)
 #### Added
 - improved screenshot handling when using the ApplangaSwiftUI framework
 - updated the minimum deployment targets: iOS 15, tvOS 15, watchOS 9, macOS 12
